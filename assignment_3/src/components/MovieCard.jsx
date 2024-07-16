@@ -5,9 +5,9 @@ function MovieCard({ movie }) {
     <>
       <div className="MovieCard">
         <h1>Card</h1>
-        {/* <h3>{movie.title}</h3> */}
-        {/* <img src="{movie.picture}" alt="" /> */}
-        {/* <p>{movie.rating}</p> */}
+        <h3>{movie.title}</h3>
+        <img src={movie.poster} />
+        <p>{movie.vote_average}</p>
       </div>
     </>
   );

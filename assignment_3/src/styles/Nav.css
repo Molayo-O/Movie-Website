@@ -1,10 +1,42 @@
 .Navbar{
-
+color: white;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    margin: 0;
     
+    text-decoration: none;
+    font-size: 1em;
+
 }
 
-.NavLinks{
+.Navbar h1{
+    font-size: 1.7em;
+}
+
+.Navlinks{
     display: flex;
     list-style-type: none;
+}
+
+
+.NavLinks li a:hover{
+    background-color: rgb(255, 163, 101);
+}
+
+.Navbar ul li a {
+    color: white;
+    background-color: rgb(251, 126, 43);
+    padding: 2em;
+    margin: 0.5em;
+    border-radius: 1em;
+}
+.NavBar ul li a:visited{
+    color: white;
+}
+
+.NavBar ul li a:hover{
+    color: grey;
+    background-color: rgb(251, 126, 43);
 }

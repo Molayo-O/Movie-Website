@@ -1,9 +1,13 @@
 import { useState } from "react";
-
+import MovieCard from "./components/MovieCard";
 import "./App.css";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <MovieCard />
+    </>
+  );
 }
 
 export default App;

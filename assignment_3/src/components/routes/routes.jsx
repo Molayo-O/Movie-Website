@@ -1,29 +1,37 @@
 import Movie from "../Movie";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
+import Layout from "./Layout";
 
 const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
-  },
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        errorElement: <ErrorPage />,
+      },
 
-  // {
-  //   path: "/",
-  //   element: <Directors />,
-  //   errorElement: <ErrorPage />,
-  // },
+      // {
+      //   path: "/signup",
+      //   element: <Signup />,
+      //   errorElement: <ErrorPage />,
+      // },
 
-  //   {
-  //     path: "/",
-  //     element: < />,
-  //     errorElement: <ErrorPage />,
-  //   },
-  {
-    path: "/movie/:id",
-    element: <Movie />,
-    errorElement: <ErrorPage />,
+      //   {
+      //     path: "/login",
+      //     element: < Login/>,
+      //     errorElement: <ErrorPage />,
+      //   },
+      {
+        path: "/movie/:id",
+        element: <Movie />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
 ];
 

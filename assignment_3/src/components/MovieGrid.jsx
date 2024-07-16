@@ -1,9 +1,19 @@
-function MovieGrid() {
+import "../styles/MovieGrid.css";
+import MovieCard from "./MovieCard";
+import Nav from "./Nav";
+
+function MovieGrid({ movies }) {
   return (
     <>
-      <h1>GRID</h1>
-      {/* movies.map()
-      movieCards */}
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <h1>Home Page</h1>
+        {movies.map((movie) => (
+          <MovieCard title={movie.title} key={movie.id} id={movie.id} />
+        ))}
+      </main>
     </>
   );
 }

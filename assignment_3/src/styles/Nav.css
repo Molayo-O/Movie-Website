@@ -1,0 +1,10 @@
+.Navbar{
+
+    display: flex;
+    
+}
+
+.NavLinks{
+    display: flex;
+    list-style-type: none;
+}

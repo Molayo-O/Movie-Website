@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function Home() {
   const [MovieList, setMovieList] = useState([]);
   let url =
-    "https://loki.trentu.ca/~cameronvoncriegern/3430/assn/assignment2/api/movies";
+    "https://loki.trentu.ca/~molayoogunfowora/3430/assn/assignment2/api/movies/";
 
   useEffect(() => {
     fetch(url)

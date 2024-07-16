@@ -1,4 +1,3 @@
-import MovieGrid from "../MovieGrid";
 import Movie from "../Movie";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";

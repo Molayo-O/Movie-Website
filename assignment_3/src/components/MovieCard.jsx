@@ -1,10 +1,14 @@
-function MovieCard() {
+import "../styles/MovieCard.css";
+
+function MovieCard({ movie }) {
   return (
     <>
-      <h1>wee</h1>
-      {/* <h3>{movie.title}</h3> */}
-      {/* <img src="{movie.picture}" alt="" /> */}
-      {/* <p>{movie.rating}</p> */}
+      <div className="MovieCard">
+        <h1>Card</h1>
+        {/* <h3>{movie.title}</h3> */}
+        {/* <img src="{movie.picture}" alt="" /> */}
+        {/* <p>{movie.rating}</p> */}
+      </div>
     </>
   );
 }

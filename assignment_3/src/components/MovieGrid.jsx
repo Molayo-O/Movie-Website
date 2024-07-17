@@ -6,7 +6,7 @@ function MovieGrid({ movies }) {
     <>
       <div className="MovieGrid">
         {movies.map((movie) => (
-          <MovieCard movie={movie} key={movie.movieid} />
+          <MovieCard movie={movie} key={movie.movieID} />
         ))}
       </div>
     </>

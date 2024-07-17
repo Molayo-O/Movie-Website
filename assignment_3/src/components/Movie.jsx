@@ -7,7 +7,7 @@ import "../styles/Movie.css";
 function Movie() {
   const params = useParams();
 
-  let url = `https://loki.trentu.ca/~cameronvoncriegern/3430/assn/assignment2/api/movies/${params.id}`;
+  let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/${params.id}`;
 
   const [movie, setMovie] = useState([]);
 
@@ -15,7 +15,7 @@ function Movie() {
     const resp = await fetch(url);
     const jsonResponse = await resp.json();
     const movieresp = jsonResponse;
-    setMovie(movieresp[0]);
+    setMovie(movieresp);
   }
 
   useEffect(() => {
@@ -25,9 +25,9 @@ function Movie() {
   return (
     <>
       <div>
-        <h3>{movie.title}</h3>
-        <img src={movie.poster} />
-        <p>{movie.vote_average}</p>
+        <h3>{movie.Title}</h3>
+        <img src={movie.Poster} />
+        <p>{movie.Vote_average}</p>
       </div>
     </>
   );

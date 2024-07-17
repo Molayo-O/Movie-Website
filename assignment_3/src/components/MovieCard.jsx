@@ -7,12 +7,12 @@ function MovieCard({ movie }) {
   return (
     <>
       <div className="MovieCard">
-        <Link to={`/movie/${movie.movieid}`}>
-          <img src={movie.poster} />
+        <Link to={`/movie/${movie.movieID}`}>
+          <img src={movie.Poster} />
           <div className="text">
-            <h3>{movie.title}</h3>
+            <h3>{movie.Title}</h3>
             <FontAwesomeIcon className="stars" icon={faStar} />
-            <p>{movie.vote_average}</p>
+            <p>{movie.Vote_average}</p>
           </div>
         </Link>
       </div>

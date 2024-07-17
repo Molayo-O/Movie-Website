@@ -9,26 +9,38 @@ function Movie() {
 
   let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/${params.id}`;
 
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState([]); //Initialize movie array
+  const [genres, setGenres] = useState([]); //Initialize genres array
 
+  //Function to fetch specific movie
   async function fetchMovies() {
     const resp = await fetch(url);
     const jsonResponse = await resp.json();
     const movieresp = jsonResponse;
+    //update state variables
     setMovie(movieresp);
+    setGenres(JSON.parse(movieresp.Genres));
   }
 
   useEffect(() => {
     fetchMovies();
   }, []);
 
+  
+  
   return (
     <>
-      <div>
-        <h3>{movie.Title}</h3>
-        <img src={movie.Poster} />
-        <p>{movie.Vote_average}</p>
-      </div>
+      <div className="MovieDetails">
+      <h1>{movie.Title}</h1>
+      <img src={movie.Poster} alt="Movie Poster" />
+      <p>{movie.Vote_average}</p>
+      <ul>
+        {/* display movie genres */}
+          {genres.map((genre) => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </ul>
+    </div>
     </>
   );
 }

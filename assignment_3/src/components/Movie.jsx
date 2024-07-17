@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "../styles/Movie.css";
 
 function Movie() {
   const params = useParams();
@@ -23,11 +24,10 @@ function Movie() {
 
   return (
     <>
-      <div className="MovieCard">
+      <div>
         <h3>{movie.title}</h3>
         <img src={movie.poster} />
         <p>{movie.vote_average}</p>
-        <Link to={`/movie/${movie.movieid}`}>More Info</Link>
       </div>
     </>
   );

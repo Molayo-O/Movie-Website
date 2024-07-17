@@ -3,7 +3,7 @@
 
     display: grid;
     gap: 0.25em;
-    grid-template-columns: repeat(6, minmax(10em, 1fr));
-background-color: grey;
+    grid-template-columns: repeat(6, minmax(15em, 1fr));
+
 
 }

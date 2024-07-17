@@ -20,27 +20,29 @@ function Movie() {
     //update state variables
     setMovie(movieresp);
     setGenres(JSON.parse(movieresp.Genres));
+    console.log(movieresp);
   }
 
   useEffect(() => {
     fetchMovies();
   }, []);
 
-  
-  
   return (
     <>
-      <div className="MovieDetails">
-      <h1>{movie.Title}</h1>
-      <img src={movie.Poster} alt="Movie Poster" />
-      <p>{movie.Vote_average}</p>
-      <ul>
-        {/* display movie genres */}
-          {genres.map((genre) => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </ul>
-    </div>
+      <section className="MovieDetails">
+        <h1>{movie.Title}</h1>
+        <div className="movieCard">
+          <img src={movie.Poster} alt="Movie Poster" />
+          <p>{movie.Vote_average}</p>
+          <ul>
+            {/* display movie genres */}
+            {genres.map((genre) => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </ul>
+          <p>{movie.Overview}</p>
+        </div>
+      </section>
     </>
   );
 }

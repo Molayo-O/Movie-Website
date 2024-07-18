@@ -1,0 +1,146 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+}
+
+.MovieDetails {
+  background: linear-gradient(-90deg, #23262d, #555a59);
+  margin: 5em auto;
+  width: 90%;
+  color: white;
+  padding: 2em;
+  border-radius: 0.2em;
+}
+
+/*display title and button in row*/
+.Heading-Container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movieCard {
+  display: flex;
+}
+
+.movieContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/*display genres horizontally*/
+.Genres {
+  display: flex;
+  padding: 0;
+}
+
+.Genres li {
+  list-style: none;
+  margin-right: 2em;
+  background-color: rgb(80, 85, 86);
+  padding: 0.5em;
+  border-radius: 3em;
+  box-shadow: 0.1em 0.1em 0.9em #07070767;
+}
+
+/*style image*/
+.movieCard img {
+  margin: 1em 2em 3em 0.5em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/*Movie Title*/
+.Title {
+  font-size: 2.5em;
+  margin: 0.5em 0.2em;
+  font-weight: 500;
+}
+
+/*Tagline*/
+.Tagline {
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+h3 {
+  margin: 1em 0.5em 0.5em;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.25em;
+  margin: 0.5em 0em;
+  width: 80%;
+}
+
+/*Rating container*/
+.rating-container {
+  padding: 0;
+  display: flex;
+  margin-right: 3em;
+}
+
+.rating-container li {
+    font-size: 1.25em;
+    list-style: none;
+    margin-right: 4.25em;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rating:nth-of-type(3) svg:hover {
+    color: gold;
+}
+
+/*stars icon*/
+.starsDetail {
+  color: gold;
+  margin-right: 0.5em;
+}
+
+/*Add to watchlist button */
+button {
+  padding: 0.75em 2.5em;
+  border-style: none;
+  border-radius: 1.5em;
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-right: 3em;
+}
+
+button:hover {
+  background-color: rgb(195, 194, 194);
+}
+button .addIcon {
+  display: inline-block;
+  padding: 0em 0.1em;
+  transition: transform 0.3s ease;
+}
+
+button:hover .addIcon {
+  transform: rotate(90deg);
+}
+
+/*extra movie Details*/
+.moreDetails {
+  display: flex;
+  padding: 0;
+  margin: 0em;
+}
+
+.moreDetails li {
+  list-style: none;
+  margin-right: 3em;
+}
+
+.moreDetails span {
+  color: #7ca992;
+  font-weight: 500;
+}

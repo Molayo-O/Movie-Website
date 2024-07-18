@@ -36,11 +36,11 @@ function Movie() {
         <div className="Heading-Container">
           <div className="Heading">
             <h1 className="Title">{movie.Title}</h1>
-            <h3>Release Date: {movie.Release_Date}</h3>
           </div>
           <div className="WatchListAdd">
             <button>
-              <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to WatchList
+              <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to
+              WatchList
             </button>
           </div>
         </div>
@@ -53,12 +53,32 @@ function Movie() {
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </ul>
-            <p className="Tagline">{movie.Tagline}</p>
-            <p>{movie.Overview}</p>
-            <p className="rating-container">
-              <FontAwesomeIcon className="starsDetail" icon={faStar} />
-              <strong>{movie.Vote_average}</strong>/10
+            <p className="Tagline">
+              {movie.Tagline ? movie.Tagline : "Synopsis"}
             </p>
+            <p>{movie.Overview}</p>
+            <ul className="moreDetails">
+              <li>
+                <span>Release Date:</span> {movie.Release_Date}
+              </li>
+              <li>
+                <span>Runtime:</span> {movie.Runtime}min
+              </li>
+            </ul>
+            <ul className="rating-container">
+              <li>
+                <FontAwesomeIcon className="starsDetail" icon={faStar} />
+                <strong>{movie.Vote_average}</strong>/10
+              </li>
+              {/* Conditionally output count in k if greater than 1000 */}
+              <li>
+                Vote Count:{" "}
+                {movie.Vote_count >= 1000
+                  ? `${(movie.Vote_count / 1000).toFixed(1)}k`
+                  : movie.Vote_count}
+              </li>
+              <li><FontAwesomeIcon icon={faStar} />Rate</li>
+            </ul>
           </div>
         </div>
       </section>

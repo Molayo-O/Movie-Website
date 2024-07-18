@@ -5,7 +5,7 @@ body {
 
 .MovieDetails {
   background: linear-gradient(-90deg, #23262d, #555a59);
-  margin: 10em auto;
+  margin: 5em auto;
   width: 90%;
   color: white;
   padding: 2em;
@@ -76,14 +76,27 @@ p {
 
 /*Rating container*/
 .rating-container {
+  padding: 0;
   display: flex;
-  font-size: 1.5em;
+  margin-right: 3em;
 }
+
+.rating-container li {
+    font-size: 1.25em;
+    list-style: none;
+    margin-right: 3em;
+}
+
+.rating-container li:last-of-type{
+    color: none;
+}
+
 /*stars icon*/
 .starsDetail {
   color: gold;
   margin-right: 0.5em;
 }
+
 /*Add to watchlist button */
 button {
   padding: 0.75em 2.5em;
@@ -105,4 +118,21 @@ button .addIcon {
 
 button:hover .addIcon {
   transform: rotate(90deg);
+}
+
+/*extra movie Details*/
+.moreDetails {
+  display: flex;
+  padding: 0;
+  margin: 0em;
+}
+
+.moreDetails li {
+  list-style: none;
+  margin-right: 3em;
+}
+
+.moreDetails span {
+  color: #7ca992;
+  font-weight: 500;
 }

@@ -2,6 +2,8 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Movie.css";
 
 function Movie() {
@@ -30,17 +32,24 @@ function Movie() {
   return (
     <>
       <section className="MovieDetails">
-        <h1>{movie.Title}</h1>
+        <h1 className="Title">{movie.Title}</h1>
+        <h3>Release Date: {movie.Release_Date}</h3>
         <div className="movieCard">
           <img src={movie.Poster} alt="Movie Poster" />
-          <p>{movie.Vote_average}</p>
-          <ul>
-            {/* display movie genres */}
-            {genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-          <p>{movie.Overview}</p>
+          <div className="movieContent">
+            <ul className="Genres">
+              {/* display movie genres */}
+              {genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+            <p className="Tagline">{movie.Tagline}</p>
+            <p>{movie.Overview}</p>
+            <p className="rating-container">
+              <FontAwesomeIcon className="starsDetail" icon={faStar} />
+              <strong>{movie.Vote_average}</strong>/10
+            </p>
+          </div>
         </div>
       </section>
     </>

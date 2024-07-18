@@ -37,10 +37,11 @@ body {
 
 .Genres li {
   list-style: none;
-  margin-right: 1em;
+  margin-right: 2em;
   background-color: rgb(80, 85, 86);
   padding: 0.5em;
   border-radius: 3em;
+  box-shadow: 0.1em 0.1em 0.9em #07070767;
 }
 
 /*style image*/
@@ -84,11 +85,18 @@ p {
 .rating-container li {
     font-size: 1.25em;
     list-style: none;
-    margin-right: 3em;
+    margin-right: 4.25em;
 }
 
-.rating-container li:last-of-type{
-    color: none;
+.rating {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rating:nth-of-type(3) svg:hover {
+    color: gold;
 }
 
 /*stars icon*/

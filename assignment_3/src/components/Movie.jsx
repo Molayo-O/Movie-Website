@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStar2 } from "@fortawesome/free-regular-svg-icons";
 import "../styles/Movie.css";
 
 function Movie() {
@@ -66,18 +67,23 @@ function Movie() {
               </li>
             </ul>
             <ul className="rating-container">
-              <li>
+              <li className="rating">
                 <FontAwesomeIcon className="starsDetail" icon={faStar} />
-                <strong>{movie.Vote_average}</strong>/10
+                <span>
+                  <strong>{movie.Vote_average}</strong>/10
+                </span>
               </li>
               {/* Conditionally output count in k if greater than 1000 */}
-              <li>
-                Vote Count:{" "}
+              <li className="rating">
+                <span>Vote Count{" "}</span>
                 {movie.Vote_count >= 1000
                   ? `${(movie.Vote_count / 1000).toFixed(1)}k`
                   : movie.Vote_count}
               </li>
-              <li><FontAwesomeIcon icon={faStar} />Rate</li>
+              <li className="rating">
+                <FontAwesomeIcon icon={faStar2} />
+                Rate
+              </li>
             </ul>
           </div>
         </div>

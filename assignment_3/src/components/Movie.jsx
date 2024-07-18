@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Movie.css";
 
 function Movie() {
@@ -32,8 +33,17 @@ function Movie() {
   return (
     <>
       <section className="MovieDetails">
-        <h1 className="Title">{movie.Title}</h1>
-        <h3>Release Date: {movie.Release_Date}</h3>
+        <div className="Heading-Container">
+          <div className="Heading">
+            <h1 className="Title">{movie.Title}</h1>
+            <h3>Release Date: {movie.Release_Date}</h3>
+          </div>
+          <div className="WatchListAdd">
+            <button>
+              <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to WatchList
+            </button>
+          </div>
+        </div>
         <div className="movieCard">
           <img src={movie.Poster} alt="Movie Poster" />
           <div className="movieContent">

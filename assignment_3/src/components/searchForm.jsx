@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/searchForm.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchForm({search}) {
@@ -22,9 +23,10 @@ export default function SearchForm({search}) {
     <form className="SearchForm" onSubmit={handleSubmit}>
       <input type="text"
       value={searchTerm}
+      placeholder="Find Movie"
       onChange={captureInput}
       />
-      <button>Find Contacts!</button>
+      <FontAwesomeIcon className="mgGlass" icon={faMagnifyingGlass} />
     </form>
   );
 }

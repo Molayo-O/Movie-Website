@@ -1,26 +1,47 @@
 import MovieGrid from "../MovieGrid";
 import { useState, useEffect } from "react";
-import SearchMovie from "../searchMovie";
+import SearchForm from "../searchForm";
 
 function Home() {
+  //initalize state variables
   const [MovieList, setMovieList] = useState([]);
-  let url =
-    "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/";
+  const [searchTerm, setSearchTerm] = useState('');
 
+  //define function to fetch all movies
   async function fetchMovies() {
-    const resp = await fetch(url, { headers: { "X-API-Key": "hi" } });
+    let baseUrl = "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/";
+    const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
     const jsonResponse = await resp.json();
     const movies = jsonResponse;
     setMovieList(movies);
   }
 
+  //define function to fetch specifc movies
+  async function fetchSpecificMovie(title) {
+    const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?title=${title}`;
+    const resp = await fetch(url, { headers: { "X-API-Key": "hi" } });
+    const jsonResponse = await resp.json();
+    //Dynamically update state based on fetched data
+    setMovieList(jsonResponse.length > 0 ? jsonResponse : []);
+  }
+
+  //On searchTerm change, dynamically render movies based on title, if defined
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    if(searchTerm) {
+      fetchSpecificMovie(searchTerm);
+    } else {
+      fetchMovies();
+    }
+  }, [searchTerm]);
+
+  //Function to handleSubmit
+  function getMovies(searchFor) {
+    setSearchTerm(searchFor);
+  }
 
   return (
     <>
-      <SearchMovie />
+      <SearchForm search={getMovies} />
       <MovieGrid movies={MovieList} />
     </>
   );

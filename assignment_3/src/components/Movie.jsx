@@ -23,7 +23,6 @@ function Movie() {
     const movieresp = jsonResponse;
     //update state variables
     setMovie(movieresp[0]);
-    console.log(movieresp[0].Genres);
     setGenres(JSON.parse(movieresp[0].Genres));
   }
 

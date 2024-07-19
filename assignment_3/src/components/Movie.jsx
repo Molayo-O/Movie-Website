@@ -24,7 +24,6 @@ function Movie() {
     //update state variables
     setMovie(movieresp);
     setGenres(JSON.parse(movieresp.Genres));
-    console.log(movieresp);
   }
 
   useEffect(() => {

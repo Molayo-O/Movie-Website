@@ -22,8 +22,9 @@ function Movie() {
     const jsonResponse = await resp.json();
     const movieresp = jsonResponse;
     //update state variables
-    setMovie(movieresp);
-    setGenres(JSON.parse(movieresp.Genres));
+    setMovie(movieresp[0]);
+    console.log(movieresp[0].Genres);
+    setGenres(JSON.parse(movieresp[0].Genres));
   }
 
   useEffect(() => {

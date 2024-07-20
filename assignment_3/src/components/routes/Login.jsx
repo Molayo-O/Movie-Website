@@ -11,6 +11,7 @@ export default function Login({ setApiKey }) {
 
   //Function to handleSubmit
   function handleSubmit(event) {
+    fetchAPIAuth();
     event.preventDefault();
     setErrors({});
   }
@@ -18,7 +19,7 @@ export default function Login({ setApiKey }) {
   //define function to fetch authentication API
   async function fetchAPIAuth() {
     let baseUrl =
-      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/endpoints/login-api";
+      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/endpoints/login";
     const resp = await fetch(baseUrl, {
       method: "POST",
       headers: {
@@ -39,10 +40,6 @@ export default function Login({ setApiKey }) {
       setApiKey(jsonResponse.apiKey);
     }
   }
-
-  useEffect(() => {
-    fetchAPIAuth();
-  }, [username]);
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>

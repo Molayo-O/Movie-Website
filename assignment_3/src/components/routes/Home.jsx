@@ -37,7 +37,7 @@ function Home() {
   }, [searchTerm]);
 
   async function fetchMovieByGenre(genreType) {
-    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/genre?=${genreType}`;
+    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?genres=${genreType}`;
     const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
     const jsonResponse = await resp.json();
     const movies = jsonResponse;

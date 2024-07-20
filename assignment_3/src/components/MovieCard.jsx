@@ -10,9 +10,9 @@ function MovieCard({ movie }) {
         <Link to={`/movie/${movie.movieID}`}>
           <img src={movie.Poster} />
           <div className="text">
-            <h3>{movie.Title}</h3>
+            <h3 className="lora movieTitle">{movie.Title}</h3>
             <FontAwesomeIcon className="stars" icon={faStar} />
-            <p>{movie.Vote_average}</p>
+            <p className="lora">{movie.Vote_average}</p>
           </div>
         </Link>
       </div>

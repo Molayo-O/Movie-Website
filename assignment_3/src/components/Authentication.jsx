@@ -6,7 +6,9 @@ export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
   //initialize state from cookies
+  //compare isAuth if it's true otherwise false
   const [isAuth, setIsAuth] = useState(Cookies.get("isAuth") === "true");
+  //determine if apiKey is set to the value in cookie
   const [apiKey, setApiKey] = useState(Cookies.get("apiKey") || null);
 
   //update cookies when isAuth changes

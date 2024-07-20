@@ -1,44 +1,42 @@
-import { useState, useEffect } from "react";
-import SearchForm from "../searchForm";
+import { useContext, useState } from "react";
 import "../../styles/login.css";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../Authentication";
 
-export default function Login({ setApiKey }) {
+const APIKEY =
+  "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
+
+export default function Login() {
   //initialize state variables
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [redirect, setRedirect] = useState(false); // State to handle redirection
+  //initalize context variables
+  const { setIsAuth, setApiKey } = useContext(AuthContext);
 
   //Function to handleSubmit
   function handleSubmit(event) {
-    fetchAPIAuth();
     event.preventDefault();
     setErrors({});
+
+    //Add simple logic for empty fields
+    if (username === "" || password === "") {
+      setErrors({
+        empty_username: username === "" ? "Please provide a username" : "",
+        empty_password: password === "" ? "Please provide a password" : "",
+      });
+    } else {
+      setApiKey(APIKEY); //set API Key in context
+      setIsAuth(true); //Set user as authenticated
+      setRedirect(true); // Set redirect to true to trigger navigation
+      
+    }
   }
 
-  //define function to fetch authentication API
-  async function fetchAPIAuth() {
-    let baseUrl =
-      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/endpoints/login";
-    const resp = await fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      //Convert state values to JSON
-      body: JSON.stringify({ username, password }),
-    });
-    // headers: { "X-API-Key": "hi" }
-    const jsonResponse = await resp.json();
-
-    //if api responds with errors
-    if (jsonResponse.errors) {
-      setErrors(jsonResponse.errors);
-    }
-    //else we retrieve the API key from fetch and pass to state variable
-    else {
-      setApiKey(jsonResponse.apiKey);
-    }
+  if(redirect) {
+    return <Navigate to = "/MyAccount/Watchlist"/> //redirect user to account page
   }
 
   return (

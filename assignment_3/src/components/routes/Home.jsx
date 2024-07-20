@@ -45,7 +45,7 @@ function Home() {
   }
 
   useEffect(() => {
-    if (genreType) {
+    if (genreType && genreType != "x") {
       fetchMovieByGenre(genreType);
     } else {
       fetchMovies();

@@ -22,7 +22,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.65); /* Semi-transparent background */
     opacity: 0; /* Start invisible */
     transition: opacity 0.3s ease; /* Smooth transition */
     pointer-events: none; /* Allow interaction with the image */
@@ -41,7 +41,7 @@
   .text {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.3em;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -49,8 +49,8 @@
     text-align: center;
     opacity: 0; /* Start invisible */
     transition: opacity 0.3s ease; /* Smooth transition */
-    font-family: "Lora", serif;
-
+    width: 100%;
+padding: 0.5em;
   }
 
   .text a:hover{
@@ -86,4 +86,15 @@ color: rgb(169, 169, 169);
   .MovieCard img{
     border-radius: 1em;
 
+  }
+
+.lora, h3 .lora, p .lora {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .movieTitle{
+    min-width: 100%;
   }

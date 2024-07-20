@@ -1,15 +1,17 @@
 import MovieGrid from "../MovieGrid";
 import { useState, useEffect } from "react";
 import SearchForm from "../searchForm";
+import FilterGenre from "../FilterGenre";
 
 function Home() {
   //initalize state variables
   const [MovieList, setMovieList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [genreType, setGenreType] = useState("");
   //define function to fetch all movies
   async function fetchMovies() {
-    let baseUrl = "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/";
+    let baseUrl =
+      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/";
     const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
     const jsonResponse = await resp.json();
     const movies = jsonResponse;
@@ -27,20 +29,41 @@ function Home() {
 
   //On searchTerm change, dynamically render movies based on title, if defined
   useEffect(() => {
-    if(searchTerm) {
+    if (searchTerm) {
       fetchSpecificMovie(searchTerm);
     } else {
       fetchMovies();
     }
   }, [searchTerm]);
 
+  async function fetchMovieByGenre(genreType) {
+    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?genres=${genreType}`;
+    const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
+    const jsonResponse = await resp.json();
+    const movies = jsonResponse;
+    setMovieList(movies);
+  }
+
+  useEffect(() => {
+    if (genreType && genreType != "x") {
+      fetchMovieByGenre(genreType);
+    } else {
+      fetchMovies();
+    }
+  }, [genreType]);
+
   //Function to handleSubmit
   function getMovies(searchFor) {
     setSearchTerm(searchFor);
   }
 
+  function getGenreMovies(searchGenre) {
+    setGenreType(searchGenre);
+  }
+
   return (
     <>
+      <FilterGenre searchGenre={getGenreMovies} />
       <SearchForm search={getMovies} />
       <MovieGrid movies={MovieList} />
     </>

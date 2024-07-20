@@ -2,6 +2,7 @@ import Movie from "../Movie";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import Layout from "./Layout";
+import Login from "./Login";
 
 const routes = [
   {
@@ -21,11 +22,11 @@ const routes = [
       //   errorElement: <ErrorPage />,
       // },
 
-      //   {
-      //     path: "/login",
-      //     element: < Login/>,
-      //     errorElement: <ErrorPage />,
-      //   },
+        {
+          path: "/login",
+          element: <Login />,
+          errorElement: <ErrorPage />,
+        },
       {
         path: "/movie/:id",
         element: <Movie />,

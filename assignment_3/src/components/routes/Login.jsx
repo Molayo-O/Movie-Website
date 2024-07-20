@@ -3,6 +3,7 @@ import "../../styles/login.css";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Authentication";
+import Cookies from 'js-cookie';
 
 const APIKEY =
   "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";

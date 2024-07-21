@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./Authentication";
 import MovieGrid from "./MovieGrid";
+import { Link } from "react-router-dom";
 import "../styles/completedWatch.css";
 
 export default function CompletedWatchlist() {
@@ -42,7 +43,9 @@ export default function CompletedWatchlist() {
             <td>
               <div className="movie-container">
                 <img src={movie.Poster} alt="movie Poster" />
-                <h4>{movie.Title}</h4>
+                <Link to={`/movie/${movie.movieID}`}>
+                  <h4>{movie.Title}</h4>
+                </Link>
               </div>
             </td>
             <td>{movie.Release_Date}</td>

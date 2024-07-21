@@ -3,10 +3,11 @@ import "../../styles/login.css";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Authentication";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const APIKEY =
-  "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
+  // "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
+  "1234";
 
 export default function Login() {
   //initialize state variables
@@ -32,12 +33,11 @@ export default function Login() {
       setApiKey(APIKEY); //set API Key in context
       setIsAuth(true); //Set user as authenticated
       setRedirect(true); // Set redirect to true to trigger navigation
-      
     }
   }
 
-  if(redirect) {
-    return <Navigate to = "/MyAccount/Watchlist"/> //redirect user to account page
+  if (redirect) {
+    return <Navigate to="/MyAccount/Watchlist" />; //redirect user to account page
   }
 
   return (

@@ -5,7 +5,7 @@ import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import Layout from "./Layout";
 import AuthRoute from "./authRoute";
-
+import CompletedWatchlist from "../CompletedWatchList";
 const routes = [
   {
     path: "/",
@@ -39,6 +39,11 @@ const routes = [
           {
             path: "/MyAccount/Watchlist",
             element: <WatchList />,
+            errorElement: <ErrorPage />,
+          },
+          {
+            path: "/MyAccount/CompletedWatchList",
+            element: <CompletedWatchlist />,
             errorElement: <ErrorPage />,
           }
         ]

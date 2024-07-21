@@ -1,0 +1,44 @@
+.CompletedWatch {
+  width: 100%;
+  display: block;
+  color: white;
+  background-color: rgb(3, 3, 16);
+  border-collapse: collapse;
+}
+
+.movie-container {
+  display: flex;
+  align-items: center;
+  gap: 5em;
+}
+
+.movie-container img {
+  width: 10%;
+  height: auto;
+}
+
+.CompletedWatch th,
+.CompletedWatch td {
+  padding: 0.5em 3em;
+  text-align: left;
+}
+
+.CompletedWatch td:first-child {
+  padding-left: 3em;
+}
+
+.CompletedWatch td:last-child {
+  padding-right: 5em;
+}
+
+.CompletedWatch th {
+  background-color: black;
+}
+
+.CompletedWatch tr:nth-child(even) {
+  background-color: rgba(14, 15, 38, 0.448);
+}
+h4 {
+  margin-left: 1em;
+  font-size: 1em;
+}

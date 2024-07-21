@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./Authentication";
 import MovieGrid from "./MovieGrid";
 import { Link } from "react-router-dom";
+import { Fragment } from "react";
 import "../styles/completedWatch.css";
 
 export default function CompletedWatchlist() {
@@ -24,36 +25,40 @@ export default function CompletedWatchlist() {
     fetchCompletedMovies();
   }, []);
   return (
-    <table className="CompletedWatch">
-      <thead>
-        <tr>
-          <th>Initially Watched</th>
-          <th>Last Watched</th>
-          <th>Movie</th>
-          <th>Release Date</th>
-          <th>Rating</th>
-          <th>Times-Watched</th>
-        </tr>
-      </thead>
-      <tbody>
-        {List.map((movie) => (
-          <tr key={movie.movieID}>
-            <td>{movie.Initially_Watched}</td>
-            <td>{movie.Last_Watched}</td>
-            <td>
-              <div className="movie-container">
-                <img src={movie.Poster} alt="movie Poster" />
-                <Link to={`/movie/${movie.movieID}`}>
-                  <h4>{movie.Title}</h4>
-                </Link>
-              </div>
-            </td>
-            <td>{movie.Release_Date}</td>
-            <td>{movie.rating}</td>
-            <td>{movie.Times_watched}</td>
+    <Fragment>
+      <h1 className="Heading">Completed WatchList</h1>
+      <h3>Sorted By Highest Rated</h3>
+      <table className="CompletedWatch">
+        <thead>
+          <tr>
+            <th>Initially Watched</th>
+            <th>Last Watched</th>
+            <th>Movie</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+            <th>Times-Watched</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {List.map((movie) => (
+            <tr key={movie.movieID}>
+              <td>{movie.Initially_Watched}</td>
+              <td>{movie.Last_Watched}</td>
+              <td>
+                <div className="movie-container">
+                  <img src={movie.Poster} alt="movie Poster" />
+                  <Link to={`/movie/${movie.movieID}`}>
+                    <h4>{movie.Title}</h4>
+                  </Link>
+                </div>
+              </td>
+              <td>{movie.Release_Date}</td>
+              <td>{movie.rating}</td>
+              <td>{movie.Times_watched}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Fragment>
   );
 }

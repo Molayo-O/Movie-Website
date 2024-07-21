@@ -11,7 +11,7 @@ color: white;
 }
 
 
-h1:first-of-type {
+.Login-Heading {
 font-size: 1.5em;
 grid-column: 1 / span 2; /* Fix: span 2 columns */
 justify-self: center;

@@ -6,8 +6,8 @@ import { AuthContext } from "../Authentication";
 import Cookies from "js-cookie";
 
 const APIKEY =
-  "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
-// "1234";
+  // "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
+  "1234";
 
 export default function Login() {
   //initialize state variables

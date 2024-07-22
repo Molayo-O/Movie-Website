@@ -16,7 +16,7 @@ const routes = [
         path: "/",
         element: <Home />,
       },
-      
+
       {
         path: "/Login",
         element: <Login />,
@@ -40,8 +40,8 @@ const routes = [
             path: "/MyAccount/Watchlist",
             element: <WatchList />,
             errorElement: <ErrorPage />,
-          }
-        ]
+          },
+        ],
       },
     ],
   },

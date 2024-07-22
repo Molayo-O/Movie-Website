@@ -28,13 +28,15 @@ export default function CompletedWatchlist() {
   async function updateMovieDetail(movieId, endpoint, newValue) {
     const baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movieId}/${endpoint}`;
 
+    const formData = new URLSearchParams();
+    formData.append("rating", newValue);
     const resp = await fetch(baseUrl, {
       method: "PATCH",
       headers: {
         "X-API-Key": apiKey,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ [endpoint]: newValue }),
+      body: formData,
+      // body: JSON.stringify({ [endpoint]: newValue }),
     });
 
     const response = await resp.json();
@@ -85,16 +87,16 @@ export default function CompletedWatchlist() {
                 </div>
               </td>
               <td>{movie.Release_Date}</td>
-              <td>
+              <td className="display-rating">
                 {movie.rating}
                 <form
-                  className="scoreForm"
+                  className="rating-form"
                   onSubmit={(event) => {
                     event.preventDefault(); // Prevent form submission
                     updateMovieDetail(movie.movieID, "rating", score); // Pass the score value to the updateMovieDetail function
                   }}
                 >
-                  <input
+                  <input className="rating-input"
                     type="number"
                     //Add unique id for each input field to avoid updating all movie ratings
                     id={`score for movie ${movie.movieID}`} 

@@ -18,7 +18,7 @@ function MovieCard({ movie }) {
             </p>
           </div>
         </Link>
-        <QuickAddButton movieID={movie.movieID} />
+        <QuickAddButton movie={movie} />
       </div>
     </>
   );

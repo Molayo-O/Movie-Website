@@ -24,7 +24,7 @@ export default function WatchList() {
   }
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies(apiKey);
   }, []);
 
   return (

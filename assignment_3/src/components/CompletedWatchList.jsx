@@ -49,8 +49,6 @@ export default function CompletedWatchlist() {
         }
       });
       setMovieList(newMovieList); //Update state variable
-    } else {
-      console.error("Failed to update movie detail:", response);
     }
   }
 
@@ -98,13 +96,14 @@ export default function CompletedWatchlist() {
                 >
                   <input
                     type="number"
-                    id="score"
+                    //Add unique id for each input field to avoid updating all movie ratings
+                    id={`score for movie ${movie.movieID}`} 
                     value={score}
                     onChange={(event) => setScore(event.target.value)} // Update the score state based on user input
                   />
                 </form>
               </td>
-              <td>
+              <td className="display-side">
                 {movie.Times_watched}
                 <button
                   onClick={() =>
@@ -115,7 +114,7 @@ export default function CompletedWatchlist() {
                     )
                   }
                 >
-                  Increase
+                  +
                 </button>
               </td>
             </tr>

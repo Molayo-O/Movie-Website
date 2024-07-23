@@ -2,7 +2,7 @@
   width: 100%;
   display: block;
   color: white;
-  background-color: rgb(3, 3, 16);
+  background-color: rgba(33, 31, 31, 0.741);
   border-collapse: collapse;
 }
 
@@ -19,7 +19,7 @@
 
 .CompletedWatch th,
 .CompletedWatch td {
-  padding: 0.5em 3em;
+  padding: 0.5em 1.5em;
   text-align: left;
 }
 
@@ -32,11 +32,7 @@
 }
 
 .CompletedWatch th {
-  background-color: black;
-}
-
-.CompletedWatch tr:nth-child(even) {
-  background-color: rgba(14, 15, 38, 0.448);
+  background-color: rgba(1, 4, 7, 0.252);
 }
 
 .Heading,
@@ -71,4 +67,18 @@ h4:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2em auto;
+}
+
+.rating-form {
+  display: block;
+}
+.rating-input {
+  text-indent: 0em;
+  width: 50%;
+  padding: 0.3em 0.5em;
+}
+
+.display-rating {
+  /* display: flex; */
 }

@@ -1,11 +1,10 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "./Authentication";
 
 export function QuickAddButton({ movie }) {
   const { apiKey } = useContext(AuthContext);
-  const { isAuth } = useContext(AuthContext);
 
   async function fetchMovies(apikey) {
     let baseUrl =

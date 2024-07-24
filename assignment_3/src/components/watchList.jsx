@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Authentication";
-import MovieGrid from "./MovieGrid";
+
+import { WatchListGrid } from "./WatchListGrid";
 
 export default function WatchList() {
   // Authentication
@@ -19,7 +20,6 @@ export default function WatchList() {
       headers: { "X-API-Key": apikey },
     });
     const jsonResponse = await resp.json();
-    console.log(jsonResponse);
     const movies = jsonResponse;
     setMovieList(movies);
   }
@@ -47,7 +47,7 @@ export default function WatchList() {
   return (
     <>
       <div style={{ color: "white" }}>Your API Key is {apiKey}</div>;
-      <MovieGrid movies={MovieList} />
+      <WatchListGrid movies={MovieList} />
     </>
   );
 }

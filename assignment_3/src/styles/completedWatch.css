@@ -1,0 +1,84 @@
+.CompletedWatch {
+  width: 100%;
+  display: block;
+  color: white;
+  background-color: rgba(33, 31, 31, 0.741);
+  border-collapse: collapse;
+}
+
+.movie-container {
+  display: flex;
+  align-items: center;
+  gap: 5em;
+}
+
+.movie-container img {
+  width: 10%;
+  height: auto;
+}
+
+.CompletedWatch th,
+.CompletedWatch td {
+  padding: 0.5em 1.5em;
+  text-align: left;
+}
+
+.CompletedWatch td:first-child {
+  padding-left: 3em;
+}
+
+.CompletedWatch td:last-child {
+  padding-right: 5em;
+}
+
+.CompletedWatch th {
+  background-color: rgba(1, 4, 7, 0.252);
+}
+
+.Heading,
+h3 {
+  color: white;
+}
+h4 {
+  margin-left: 1em;
+  font-size: 1em;
+  color: white;
+}
+
+h4:hover {
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.568);
+}
+
+.CompletedWatch button {
+  font-size: 0.75em;
+  border-radius: 2em;
+  border-style: none;
+  padding: 0.25em 0.50em;
+  font-weight: bold;
+}
+
+.CompletedWatch button:hover {
+  background-color: rgba(148, 232, 148, 0.27);
+  color: white;
+}
+
+.display-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2em auto;
+}
+
+.rating-form {
+  display: block;
+}
+.rating-input {
+  text-indent: 0em;
+  width: 50%;
+  padding: 0.3em 0.5em;
+}
+
+.display-rating {
+  /* display: flex; */
+}

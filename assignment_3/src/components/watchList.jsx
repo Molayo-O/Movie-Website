@@ -5,7 +5,7 @@ import MovieGrid from "./MovieGrid";
 export default function WatchList() {
   // Authentication
   const { apiKey } = useContext(AuthContext);
-  const { isAuth } = useContext(AuthContext);
+  // const { isAuth } = useContext(AuthContext);
 
   // ******************
 
@@ -19,7 +19,6 @@ export default function WatchList() {
       headers: { "X-API-Key": apikey },
     });
     const jsonResponse = await resp.json();
-    console.log(apikey);
     console.log(jsonResponse);
     const movies = jsonResponse;
     setMovieList(movies);

@@ -6,7 +6,6 @@ function WatchListCard({ movie }) {
     <>
       <div className="MovieCard">
         <Link id="Poster" to={`/movie/${movie.movieID}`}>
-          <h1>Movie</h1>
           <img src={movie.Poster} />
           {/* <div className="text">
             <h3 className="lora movieTitle">{movie.Title}</h3>

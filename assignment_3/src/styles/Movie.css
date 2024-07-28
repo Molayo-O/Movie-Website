@@ -144,3 +144,112 @@ button:hover .addIcon {
   color: #7ca992;
   font-weight: 500;
 }
+
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.popup-form-content {
+
+  border-radius: 1em;
+  position: relative;
+  color:white;
+  box-shadow: 0 0 0 0.25em white;
+  background: linear-gradient(-90deg, #23262d, #555a59);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+.popup-form-content input{
+  background-color: rgb(197, 197, 197);
+  color: black;
+  font-weight: 600;
+}
+
+.popup-form-content label, .popup-form-content input{
+  font-size: 0.9em;
+}
+
+.popup-form-content form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25em;
+  height: 18em;
+  margin: 0;
+  margin-bottom: 2em;
+}
+
+.popup-form-content h2{
+  font-size: 2.4em;
+  margin-top: 0.2em;
+  margin-bottom: 1.6em;
+}
+
+.popup-form-content form label{
+  font-size: 0.8em;
+  color: rgb(172, 172, 172);
+  padding-left: 0.3em;
+  padding: 0.3em;
+}
+
+.popup-form-content .container{
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em;
+}
+
+.popup-form-content .close{
+  border-radius: 1;
+  font-weight: 800;
+  color: black;
+  background-color: grey;
+  padding:0.5em 1em;
+  margin: 0;
+  font-size: 0.8em;
+  position: absolute;
+  align-self: flex-end;
+  right: 1em;
+  top: 1em;
+}
+
+.popup-form-content .submit{
+  margin: 0;
+margin-top: 1.5em;
+  font-size: 0.8em;
+}
+
+.popup-form-content .submit:hover{
+  color: white;
+box-shadow: 0 0 0 0.1em white;
+
+}
+.popup-form-content .close:hover{
+  color: white;
+  box-shadow: 0 0 0 0.1em white;
+
+}
+
+
+
+.WatchListFont {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+}
+/* 
+.notes{
+
+} */

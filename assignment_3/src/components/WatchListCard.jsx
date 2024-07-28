@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function WatchListCard({ movie }) {
-  console.log(movie);
   return (
     <>
       <div className="MovieCard">

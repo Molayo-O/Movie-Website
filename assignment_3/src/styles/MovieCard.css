@@ -4,18 +4,20 @@
     align-items: center;
     justify-content: center;
     margin: 1em;
-    position: relative; /* Ensure the overlay is positioned correctly */
   }
   
-  .MovieCard img {
-    display: block;
+#Poster {
+  display: flex;
+align-items: center;
+    justify-content: center;
     width: 100%;
+    position: relative;
     height: auto;
     margin: 0;
     padding: 0;
   }
   
-  .MovieCard::after {
+  #Poster::after {
     content: "";
     position: absolute;
     top: 0;
@@ -29,10 +31,15 @@
     border-radius: 1em;
   }
   
-  .MovieCard:hover::after {
+  #Poster:hover::after {
     opacity: 1; /* Show overlay on hover */
   }
   
+#Poster:hover{
+  transform: scale(1.03);
+  border-radius: 0.7em;
+}
+
 .text h3{
   font-size: 0.9em;
   min-height: 4em;
@@ -50,8 +57,9 @@
     opacity: 0; /* Start invisible */
     transition: opacity 0.3s ease; /* Smooth transition */
     width: 100%;
-padding: 0.5em;
+/* padding: 0.5em; */
   }
+
 
   .text a:hover{
 transform: scale(1.1);
@@ -62,7 +70,7 @@ color: rgb(169, 169, 169);
     color: white;
 }
 
-  .MovieCard:hover .text {
+#Poster:hover .text {
     opacity: 1; /* Show text on hover */
     z-index: 1;
   }
@@ -77,11 +85,11 @@ color: rgb(169, 169, 169);
     font-size: 2em;
   }
 
-  .MovieCard:hover{
+  /* .MovieCard:hover{
     transform: scale(1.03);
     box-shadow:  0 0 0.5em white;
     border-radius: 0.7em;
-  }
+  } */
 
   .MovieCard img{
     border-radius: 1em;
@@ -96,5 +104,29 @@ color: rgb(169, 169, 169);
   }
 
   .movieTitle{
-    min-width: 100%;
+width: 50%;
+margin: auto;
+margin-bottom: 1em;
   }
+
+  #QuickAdd{
+    width: 80%;
+margin: 0;
+margin-top: 0.3em;
+
+  }
+
+.stars{
+  font-size: 3em;
+}
+
+  #rating{
+    position: absolute;
+    top: 62%;
+    left: 45%;
+    font-weight: 800;
+    color: black;
+    text-align: center;
+  }
+
+

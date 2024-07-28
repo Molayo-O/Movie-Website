@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStar2 } from "@fortawesome/free-regular-svg-icons";
 import "../styles/Movie.css";
+import PopUpForm from "./PopUpForm";
 
 function Movie() {
   const params = useParams();
@@ -37,12 +37,8 @@ function Movie() {
           <div className="Heading">
             <h1 className="Title">{movie.Title}</h1>
           </div>
-          <div className="WatchListAdd">
-            <button>
-              <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to
-              WatchList
-            </button>
-          </div>
+          <div className="WatchListAdd"></div>
+          <PopUpForm movie={movie} />
         </div>
         <div className="movieCard">
           <img src={movie.Poster} alt="Movie Poster" />
@@ -74,7 +70,7 @@ function Movie() {
               </li>
               {/* Conditionally output count in k if greater than 1000 */}
               <li className="rating">
-                <span>Vote Count{" "}</span>
+                <span>Vote Count </span>
                 {movie.Vote_count >= 1000
                   ? `${(movie.Vote_count / 1000).toFixed(1)}k`
                   : movie.Vote_count}

@@ -91,6 +91,19 @@ h3 {
     margin-right: 4.25em;
 }
 
+.Heading-Container button{
+  font-size: 1.3em;
+  border-radius:1em;
+  border: none;
+  padding: 0.6em;
+}
+
+.Heading-Container button:hover{
+background-color: white;
+color: rgb(111, 111, 111);
+
+}
+
 .rating {
     display: flex;
     align-items: center;
@@ -235,15 +248,16 @@ margin-top: 1.5em;
 }
 
 .popup-form-content .submit:hover{
-  color: white;
+  color: rgb(158, 158, 158);
 box-shadow: 0 0 0 0.1em white;
 
 }
 .popup-form-content .close:hover{
-  color: white;
+  color: rgb(157, 157, 157);
   box-shadow: 0 0 0 0.1em white;
 
 }
+
 
 
 
@@ -252,7 +266,11 @@ box-shadow: 0 0 0 0.1em white;
   font-optical-sizing: auto;
   font-weight: 600;
 }
-/* 
-.notes{
 
-} */
+ .notes{
+width: 25em;
+height: 15em;
+background-color: rgb(187, 187, 187);
+border-radius: 1em;
+padding: 1em;
+}

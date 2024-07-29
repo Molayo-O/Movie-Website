@@ -37,7 +37,7 @@ function Movie() {
           <div className="Heading">
             <h1 className="Title">{movie.Title}</h1>
           </div>
-          <div className="WatchListAdd"></div>
+          <div className="WatchListAdd watchlistbutton"></div>
           <PopUpForm movie={movie} />
         </div>
         <div className="movieCard">

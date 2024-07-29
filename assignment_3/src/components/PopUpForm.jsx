@@ -87,22 +87,12 @@ function PopUpForm({ movie }) {
               }}
             >
               <div className="container">
-                <input type="text" />
-                <label htmlFor="name" name="name">
-                  Name
-                </label>
-              </div>
-              <div className="container">
-                <input className="notes" type="text" name="notes" />
-                <label htmlFor="notes">Notes</label>
-              </div>
-              <div className="container">
                 <input type="number" />
                 <label htmlFor="number">Priority</label>
               </div>
               <div className="container">
-                <input type="email" />
-                <label htmlFor="email">Email</label>
+                <textarea className="notes" name="notes"></textarea>
+                <label htmlFor="notes">Notes</label>
               </div>
               <button className="submit" type="submit">
                 Submit

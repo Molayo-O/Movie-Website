@@ -15,6 +15,12 @@ function Nav() {
           <li>
             <NavLink to="/Signup">Sign Up</NavLink>
           </li>
+          <li>
+            <NavLink to ="/MyAccount/Watchlist">ToWatch</NavLink>
+          </li>
+          <li>
+            <NavLink to ="/MyAccount/CompletedWatchList">Logs</NavLink>
+          </li>
         </ul>
       </nav>
     </>

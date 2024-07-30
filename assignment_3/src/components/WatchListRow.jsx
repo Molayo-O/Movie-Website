@@ -19,8 +19,9 @@ function WatchListRow({ movie, updatePriority }) {
           </Link>
         </div>
       </td>
-      <input type="number" value={priority} onChange={changePriority} />
-      <label htmlFor="number">Priority</label>
+      <td>
+        <input type="number" value={priority} onChange={changePriority} />
+      </td>
     </tr>
   );
 }

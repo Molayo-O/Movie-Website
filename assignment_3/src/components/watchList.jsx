@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Authentication";
-
-import { WatchListGrid } from "./WatchListGrid";
+import { WatchListTable } from "./WatchListTable";
 
 export default function WatchList() {
   // Authentication
@@ -47,7 +46,7 @@ export default function WatchList() {
   return (
     <>
       <div style={{ color: "white" }}>Your API Key is {apiKey}</div>;
-      <WatchListGrid movies={MovieList} />
+      <WatchListTable movies={MovieList} />
     </>
   );
 }

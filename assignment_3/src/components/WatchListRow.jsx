@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function WatchListRow({ movie, updatePriority }) {
+function WatchListRow({ movie, updatePriority, DeleteMovie }) {
   const [priority, setPriority] = useState(movie.priority);
 
   function changePriority(ev) {
     setPriority(ev.target.value);
 
     updatePriority(movie.movieID, priority);
+  }
+
+  function HandleDelete(movieID) {
+    DeleteMovie(movieID);
   }
 
   return (
@@ -21,8 +25,17 @@ function WatchListRow({ movie, updatePriority }) {
         </div>
       </td>
 
-      <input type="number" value={priority} onChange={changePriority} />
-      <label htmlFor="number">Priority</label>
+      <td>
+        <input type="number" value={priority} onChange={changePriority} />
+      </td>
+      <td>
+        <button
+          type="submit"
+          name="delete"
+          onSubmit={HandleDelete(movie.movieID)}
+        ></button>
+      </td>
+
     </tr>
   );
 }

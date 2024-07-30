@@ -6,6 +6,7 @@ function WatchListRow({ movie, updatePriority }) {
 
   function changePriority(ev) {
     setPriority(ev.target.value);
+
     updatePriority(movie.movieID, priority);
   }
 
@@ -19,6 +20,7 @@ function WatchListRow({ movie, updatePriority }) {
           </Link>
         </div>
       </td>
+
       <input type="number" value={priority} onChange={changePriority} />
       <label htmlFor="number">Priority</label>
     </tr>

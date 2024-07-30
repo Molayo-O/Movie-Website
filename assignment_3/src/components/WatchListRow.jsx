@@ -6,6 +6,7 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
 
   function changePriority(ev) {
     setPriority(ev.target.value);
+
     updatePriority(movie.movieID, priority);
   }
 
@@ -23,6 +24,7 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
           </Link>
         </div>
       </td>
+
       <td>
         <input type="number" value={priority} onChange={changePriority} />
       </td>
@@ -33,6 +35,7 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
           onSubmit={HandleDelete(movie.movieID)}
         ></button>
       </td>
+
     </tr>
   );
 }

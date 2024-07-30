@@ -9,11 +9,11 @@ export default function CompletedWatchlist() {
   //initalize state variables
   const [List, setMovieList] = useState([]);
   const { apiKey } = useContext(AuthContext);
-  
+
   //define function to fetch all completed movies
   async function fetchCompletedMovies() {
     let baseUrl =
-    "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries";
+      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries";
     const resp = await fetch(baseUrl, {
       headers: { "X-API-Key": apiKey },
     });
@@ -21,7 +21,7 @@ export default function CompletedWatchlist() {
     const movies = jsonResponse;
     setMovieList(movies);
   }
-  
+
   useEffect(() => {
     fetchCompletedMovies();
   }, []);
@@ -29,7 +29,6 @@ export default function CompletedWatchlist() {
   //define function to update movie properties
   async function updateMovieDetail(movieId, endpoint, newValue) {
     const baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movieId}/${endpoint}`;
-
     const formData = new URLSearchParams();
     formData.append(endpoint, newValue);
     const resp = await fetch(baseUrl, {
@@ -55,7 +54,6 @@ export default function CompletedWatchlist() {
       setMovieList(newMovieList); //Update state variable
     }
   }
-
 
   return (
     <Fragment>

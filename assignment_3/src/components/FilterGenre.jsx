@@ -14,16 +14,19 @@ function FilterGenre({ searchGenre }) {
 
   return (
     <>
-      <div className="genreContainer">
-        <label htmlFor="genres"></label>
-        <select name="genres" id="genres" onChange={submitGenre}>
-          <option value="x">Filter By Genre</option>
-          <option value="action">Action</option>
-          <option value="thriller">Thriller</option>
-          <option value="horror">Horror</option>
-          <option value="comedy">Comedy</option>
-        </select>
-      </div>
+      <ul className="Filters">
+        <li className="titleFilter">Filter By</li>
+        <li className="filterOptions">
+          <label htmlFor="genres"></label>
+          <select name="genres" id="genres" onChange={submitGenre}>
+            <option value="x">Genre</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="horror">Horror</option>
+            <option value="comedy">Comedy</option>
+          </select>
+        </li>
+      </ul>
     </>
   );
 }

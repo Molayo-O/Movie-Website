@@ -1,65 +1,56 @@
+/* ------------------------- */
 
-
+/* NAV STUFF */
 
 /* ------------------------- */
 
-        /* NAV STUFF */
-
- /* ------------------------- */
-
-body{
-    margin: 0;
-    padding: 0;
-    background-color: black;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-.Navbar a:first-of-type{
-    padding-left: 2em;
-    color: white;
-    font-size: 1.5em;
+.Navbar a:first-of-type {
+  padding-left: 2em;
+  color: white;
+  font-size: 1.5em;
 }
 
-.Navbar .Navlinks a{
-    color: white;
-    background-color: rgb(255, 123, 0);
-    padding: 1em 1.5em;
-    border-radius: 1em;
-    margin: 0.7em;
-    text-decoration: none;
-    font-size: 1.1em;
-
+.Navbar .Navlinks a {
+  color: white;
+  padding: 1em 1.5em;
+  margin: 0.7em;
+  text-decoration: none;
+  font-size: 1.1em;
 }
 
-.Navbar .Navlinks a:hover{
-background-color: rgb(255, 162, 70);
-color: black;
+.Navbar .Navlinks a:hover {
+  border-top: 0.2em solid #F29559;
+  border-bottom: 0.2em solid #F29559;
 }
 
-
-.Navbar{
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(32, 32, 32);
-    margin: 0;
-    font-size: 1em;
-    margin-bottom:  2em;
+.Navbar {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(32, 32, 32);
+  margin: 0;
+  font-size: 1em;
+  margin-bottom: 2em;
 }
 
-.Navbar h1{
-    font-size: 1.7em;
+.Navbar h1 {
+  font-size: 1.7em;
 }
 
-.Navlinks{
-    display: flex;
-    list-style-type: none;
-    padding: 1em;
-    margin: 1em;
+.Navlinks {
+  display: flex;
+  list-style-type: none;
+  padding: 1em;
+  margin: 1em;
 }
-
-

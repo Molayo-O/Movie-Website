@@ -5,11 +5,13 @@ import { AuthContext } from "./Authentication";
 export function WatchListTable({ movies }) {
   const { apiKey } = useContext(AuthContext);
 
-  async function updatePriority(movieId, endpoint, newValue) {
-    const baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieId}/${endpoint}`;
+
+  async function updatePriority(movieId, newPriority) {
+    const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieId}/priority`;
     const formData = new URLSearchParams();
-    formData.append(endpoint, newValue);
-    const resp = await fetch(baseUrl, {
+    formData.append("priority", newPriority);
+    const resp = await fetch(url, {
+
       method: "PATCH",
       headers: {
         "X-API-Key": apiKey,

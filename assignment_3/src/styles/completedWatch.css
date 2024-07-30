@@ -82,3 +82,16 @@ h4:hover {
 .display-rating {
   /* display: flex; */
 }
+
+.delete-button {
+  font-size: 0.75em;
+  border-radius: 2em;
+  border-style: none;
+  padding: 0.25em 0.50em;
+  font-weight: bold;
+}
+
+.delete-button:hover {
+  background-color: rgba(190, 27, 27, 0.548);
+  color: white;
+}

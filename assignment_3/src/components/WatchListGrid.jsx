@@ -5,7 +5,7 @@ export function WatchListGrid({ movies }) {
     <>
       <div className="MovieGrid">
         {movies.map((movie) => (
-          <WatchListCard movie={movie} key={movie.Movie_Title} />
+          <WatchListCard movie={movie} key={movie.movieID} />
         ))}
       </div>
     </>

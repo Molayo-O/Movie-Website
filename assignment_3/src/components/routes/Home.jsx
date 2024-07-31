@@ -81,7 +81,7 @@ function Home() {
     <>
       {success && (
         <div className="success">
-          <p>successfully added movie to completed watch list</p>
+          <p>successfully added movie to watch list</p>
           <button onClick={closeSuccess}>X</button>
         </div>
       )}

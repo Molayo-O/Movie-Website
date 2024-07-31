@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddCompletedWatchForm from "./AddCompletedWatchForm";
 
 function WatchListRow({ movie, updatePriority, DeleteMovie }) {
   const [priority, setPriority] = useState(movie.priority);
@@ -32,6 +33,9 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
         <button className="delete-button" name="delete" onClick={HandleDelete}>
           Delete
         </button>
+      </td>
+      <td>
+        <AddCompletedWatchForm movie={movie} DeleteFromToWatch={HandleDelete} />
       </td>
     </tr>
   );

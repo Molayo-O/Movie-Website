@@ -19,7 +19,6 @@ const MovieRow = ({ movie, updateMovieDetail }) => {
     updateMovieDetail(movie.movieID, "times-watched", newTimesWatched);
   }
 
-
   return (
     <tr key={movie.movieID}>
       <td>{movie.Initially_Watched}</td>

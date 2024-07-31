@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { QuickAddButton } from "./QuickAddButton";
-function MovieCard({ movie }) {
+function MovieCard({ movie, setError, setSuccess }) {
   return (
     <>
       <div className="MovieCard">
@@ -18,7 +18,11 @@ function MovieCard({ movie }) {
             </p>
           </div>
         </Link>
-        <QuickAddButton movie={movie} />
+        <QuickAddButton
+          movie={movie}
+          setError={setError}
+          setSuccess={setSuccess}
+        />
       </div>
     </>
   );

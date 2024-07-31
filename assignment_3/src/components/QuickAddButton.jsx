@@ -1,10 +1,10 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./Authentication";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-export function QuickAddButton({ movie }) {
+export function QuickAddButton({ movie, setError, setSuccess }) {
   const { apiKey } = useContext(AuthContext);
   const { isAuth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -18,13 +18,12 @@ export function QuickAddButton({ movie }) {
     const jsonResponse = await resp.json();
     const movies = jsonResponse;
     let movieList = [movies];
-    console.log(movies);
     return movieList;
   }
 
   const handleQuickAdd = async () => {
     // check if user can add to watchlist
-    if(!isAuth) {
+    if (!isAuth) {
       navigate("/Login");
       return;
     }
@@ -35,7 +34,6 @@ export function QuickAddButton({ movie }) {
       throw new Error("Movie already exists in watch list!");
     } else {
       try {
-        console.log(movie.movieID, apiKey);
         let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movie.movieID}`;
         const response = await fetch(url, {
           method: "POST",
@@ -52,15 +50,19 @@ export function QuickAddButton({ movie }) {
 
         const data = await response.json();
         console.log("Movie added successfully:", data);
+        setSuccess();
       } catch (error) {
+        setError();
         console.error("Error adding movie:", error);
       }
     }
   };
 
   return (
-    <button id="QuickAdd" onClick={handleQuickAdd}>
-      <FontAwesomeIcon className="addIcon" icon={faPlus} />
-    </button>
+    <>
+      <button id="QuickAdd" onClick={handleQuickAdd}>
+        <FontAwesomeIcon className="addIcon" icon={faPlus} />
+      </button>
+    </>
   );
 }

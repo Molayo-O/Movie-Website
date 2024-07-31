@@ -1,12 +1,17 @@
 import "../styles/MovieGrid.css";
 import MovieCard from "./MovieCard";
 
-function MovieGrid({ movies }) {
+function MovieGrid({ movies, setError, setSuccess }) {
   return (
     <>
       <div className="MovieGrid">
         {movies.map((movie) => (
-          <MovieCard movie={movie} key={movie.movieID} />
+          <MovieCard
+            movie={movie}
+            key={movie.movieID}
+            setError={setError}
+            setSuccess={setSuccess}
+          />
         ))}
       </div>
     </>

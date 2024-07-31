@@ -31,19 +31,22 @@
 
 
 ### Pagination
-# *ADD TESTING HERE*
+
+*Pagination Test*![A movie webpage](./pagination.gif)
 
 ### Login Page
+*Unauthenticated user*![A movie webpage](./invalid-login.gif)
 
-![alt text](image-4.png)
+*authenticated user*![A login form](image-4.png)
 
 ### WatchList
 
-![alt text](image-5.png)
+![sorted by priority](image-5.png)
+*update priority & delete*![A movie webpage](./watch-delete.gif)
 
 ### Updating priority (age of ultron)
 
-![alt text](image-6.png)
+![sorted by priority](image-6.png)
 
 ### Watched It!
 
@@ -59,3 +62,6 @@
 
 ![alt text](image-9.png)
 
+### CompletedWatchList
+
+*update score & times-watched*![A movie webpage](./update.gif)

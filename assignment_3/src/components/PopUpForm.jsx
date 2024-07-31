@@ -3,6 +3,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthContext } from "./Authentication";
+import { useNavigate } from "react-router-dom";
 
 function PopUpForm({ movie }) {
   //state variables
@@ -10,11 +11,14 @@ function PopUpForm({ movie }) {
   const [notes, setNotes] = useState("");
   const [priority, setPriority] = useState(1);
   const { apiKey } = useContext(AuthContext);
+  const {isAuth} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleFullAdd = async (notes, priority) => {
     const formData = new URLSearchParams();
     formData.append("notes", notes);
     formData.append("priority", priority);
+    
     console.log("formData:", formData.toString());
     try {
       let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movie.movieID}`;
@@ -40,6 +44,10 @@ function PopUpForm({ movie }) {
   };
 
   const handleButtonClick = () => {
+    if(!isAuth) {
+      navigate("/Login");
+      return;
+    }
     setIsVisible(!isVisible);
   };
 

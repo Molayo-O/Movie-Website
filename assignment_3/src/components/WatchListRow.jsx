@@ -35,10 +35,7 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
         </button>
       </td>
       <td>
-        <AddCompletedWatchForm
-          movie={movie}
-          DeleteFromToWatch={{ HandleDelete }}
-        />
+        <AddCompletedWatchForm movie={movie} DeleteFromToWatch={HandleDelete} />
       </td>
     </tr>
   );

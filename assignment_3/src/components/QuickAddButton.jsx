@@ -2,9 +2,12 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthContext } from "./Authentication";
+import { useNavigate } from "react-router-dom";
 
 export function QuickAddButton({ movie }) {
   const { apiKey } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   async function fetchMovies(apikey) {
     let baseUrl =
@@ -20,6 +23,11 @@ export function QuickAddButton({ movie }) {
   }
 
   const handleQuickAdd = async () => {
+    // check if user can add to watchlist
+    if(!isAuth) {
+      navigate("/Login");
+      return;
+    }
     let movieList = await fetchMovies(apiKey);
     movieList = movieList[0];
 

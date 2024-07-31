@@ -54,6 +54,7 @@ const MovieRow = ({ movie, updateMovieDetail }) => {
           />
         </form>
       </td>
+      <td>{movie.notes}</td>
       <td className="display-side">
         {timesWatched}
         <button onClick={handleTimesWatched}>+</button>

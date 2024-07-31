@@ -1,132 +1,146 @@
 .MovieCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1em;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+
 #Poster {
   display: flex;
-align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-    height: auto;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #Poster::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.65); /* Semi-transparent background */
-    opacity: 0; /* Start invisible */
-    transition: opacity 0.3s ease; /* Smooth transition */
-    pointer-events: none; /* Allow interaction with the image */
-    border-radius: 1em;
-  }
-  
-  #Poster:hover::after {
-    opacity: 1; /* Show overlay on hover */
-  }
-  
-#Poster:hover{
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#Poster::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65); /* Semi-transparent background */
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.3s ease; /* Smooth transition */
+  pointer-events: none; /* Allow interaction with the image */
+  border-radius: 1em;
+}
+
+#Poster:hover::after {
+  opacity: 1; /* Show overlay on hover */
+}
+
+#Poster:hover {
   transform: scale(1.03);
   border-radius: 0.7em;
 }
 
-.text h3{
+.text h3 {
   font-size: 0.9em;
   min-height: 4em;
 }
 
-  .text {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    opacity: 0; /* Start invisible */
-    transition: opacity 0.3s ease; /* Smooth transition */
-    width: 100%;
-/* padding: 0.5em; */
-  }
+.text {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.3s ease; /* Smooth transition */
+  width: 100%;
+  /* padding: 0.5em; */
+}
 
+.text a:hover {
+  transform: scale(1.1);
+  color: rgb(169, 169, 169);
+}
 
-  .text a:hover{
-transform: scale(1.1);
-color: rgb(169, 169, 169);
-  }
-  
-.text a{
-    color: white;
+.text a {
+  color: white;
 }
 
 #Poster:hover .text {
-    opacity: 1; /* Show text on hover */
-    z-index: 1;
-  }
-  
-  .MovieCard a{
-    margin: 0;
-    padding: 0;
-  }
+  opacity: 1; /* Show text on hover */
+  z-index: 1;
+}
 
-  .stars{
-    color: gold;
-    font-size: 2em;
-  }
+.MovieCard a {
+  margin: 0;
+  padding: 0;
+}
 
-  /* .MovieCard:hover{
+.stars {
+  color: gold;
+  font-size: 2em;
+}
+
+/* .MovieCard:hover{
     transform: scale(1.03);
     box-shadow:  0 0 0.5em white;
     border-radius: 0.7em;
   } */
 
-  .MovieCard img{
-    border-radius: 1em;
+.MovieCard img {
+  border-radius: 1em;
+}
 
-  }
+.lora,
+h3 .lora,
+p .lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
-.lora, h3 .lora, p .lora {
-    font-family: "Lora", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-  }
+.movieTitle {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 1em;
+}
 
-  .movieTitle{
-width: 50%;
-margin: auto;
-margin-bottom: 1em;
-  }
+#QuickAdd {
+  position: absolute;
+  width: 2%;
+  padding: 0.5em;
+  background-color: #ff950000;
+  color: rgba(255, 255, 255, 0.359);
+  border: none;
+  border-radius: 0.3em;
+  font-size: 0.75em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
 
-  #QuickAdd{
-    width: 80%;
-margin: 0;
-margin-top: 0.3em;
-
-  }
-
-.stars{
+.stars {
   font-size: 3em;
 }
 
-  #rating{
-    position: absolute;
-    top: 62%;
-    left: 45%;
-    font-weight: 800;
-    color: black;
-    text-align: center;
-  }
+#rating {
+  position: absolute;
+  top: 62%;
+  left: 45%;
+  font-weight: 800;
+  color: black;
+  text-align: center;
+}
 
 
+#QuickAdd:hover {
+  background-color: #ff9500;
+  color: rgb(255, 255, 255);
+}

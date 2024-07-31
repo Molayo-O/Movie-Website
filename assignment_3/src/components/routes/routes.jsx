@@ -1,4 +1,5 @@
 import Login from "./Login";
+import SignUp from "./SignUp";
 import Movie from "../Movie";
 import WatchList from "../watchList";
 import ErrorPage from "./ErrorPage";
@@ -25,11 +26,10 @@ const routes = [
         path: "/movie/:id",
         element: <Movie />,
       },
-      // {
-      //   path: "/signup",
-      //   element: <Signup />,
-      //   errorElement: <ErrorPage />,
-      // },
+      {
+        path: "/Signup",
+        element: <SignUp />,
+      },
 
       {
         //routes only authenticated users can visit

@@ -67,6 +67,7 @@ export default function CompletedWatchlist() {
             <th>Movie</th>
             <th>Release Date</th>
             <th>Rating</th>
+            <th>Review</th>
             <th>Times-Watched</th>
           </tr>
         </thead>

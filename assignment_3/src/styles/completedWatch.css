@@ -50,7 +50,7 @@ h4:hover {
   color: rgba(255, 255, 255, 0.568);
 }
 
-.CompletedWatch button {
+.display-side button {
   font-size: 0.75em;
   border-radius: 2em;
   border-style: none;
@@ -58,7 +58,7 @@ h4:hover {
   font-weight: bold;
 }
 
-.CompletedWatch button:hover {
+.display-side button:hover {
   background-color: rgba(148, 232, 148, 0.27);
   color: white;
 }

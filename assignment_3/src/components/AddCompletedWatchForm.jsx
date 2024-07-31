@@ -27,7 +27,6 @@ function AddCompletedWatchForm({ movie, DeleteFromToWatch }) {
         method: "POST",
         headers: {
           "X-API-Key": apiKey,
-          "Content-Type": "application/json",
         },
         body: formData,
       });

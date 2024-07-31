@@ -24,7 +24,7 @@ function AddCompletedWatchForm({ movie, DeleteFromToWatch }) {
     try {
       let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movie.movieID}`;
       const response = await fetch(url, {
-        method: "PUT",
+        method: "POST",
         headers: {
           "X-API-Key": apiKey,
           "Content-Type": "application/json",

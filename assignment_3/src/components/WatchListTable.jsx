@@ -11,20 +11,18 @@ export function WatchListTable({ movies }) {
     const resp = await fetch(url, {
       method: "DELETE",
       headers: {
-        "X-API-Key": apiKey
-      }
+        "X-API-Key": apiKey,
+      },
     });
     //update state
-    setToWatchList(toWatchList.filter(movie => movie.movieID !== movieID));
+    setToWatchList(toWatchList.filter((movie) => movie.movieID !== movieID));
   }
-
 
   async function updatePriority(movieId, newPriority) {
     const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieId}/priority`;
     const formData = new URLSearchParams();
     formData.append("priority", newPriority);
     const resp = await fetch(url, {
-
       method: "PATCH",
       headers: {
         "X-API-Key": apiKey,

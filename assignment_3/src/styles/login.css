@@ -35,7 +35,8 @@ background-color: white;
 
 /* style username div */
 .username,
-.password {
+.password,
+.confirm-password {
 position: relative;
 grid-column: 1/span 2;
 width: 90%;

@@ -12,7 +12,7 @@ function Home() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 54;
+  const pageSize = 42;
 
   // Fetch movies based on search term, genre, and current page
   async function fetchMovies(currentpage) {

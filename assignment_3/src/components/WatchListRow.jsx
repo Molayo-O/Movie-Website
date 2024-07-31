@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function WatchListRow({ movie, updatePriority, DeleteMovie }) {
   const [priority, setPriority] = useState(movie.priority);
@@ -29,12 +29,10 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
         <input type="number" value={priority} onChange={changePriority} />
       </td>
       <td>
-        <button className="delete-button"
-          name="delete"
-          onClick={HandleDelete}
-        >Delete</button>
+        <button className="delete-button" name="delete" onClick={HandleDelete}>
+          Delete
+        </button>
       </td>
-
     </tr>
   );
 }

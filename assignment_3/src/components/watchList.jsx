@@ -45,7 +45,6 @@ export default function WatchList() {
 
   return (
     <>
-      <div style={{ color: "white" }}>Your API Key is {apiKey}</div>;
       <WatchListTable movies={MovieList} />
     </>
   );

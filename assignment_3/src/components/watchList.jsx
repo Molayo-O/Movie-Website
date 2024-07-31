@@ -7,7 +7,8 @@ export default function WatchList() {
   const { apiKey } = useContext(AuthContext);
   // const { isAuth } = useContext(AuthContext);
   // ******************
-
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
   const [MovieList, setMovieList] = useState([]);
 
   // fetch movie list with api key
@@ -20,6 +21,22 @@ export default function WatchList() {
     const jsonResponse = await resp.json();
     const movies = jsonResponse;
     setMovieList(movies);
+  }
+
+  function handleFailureClose() {
+    setFailure(false);
+  }
+
+  function handleSuccessClose() {
+    setSuccess(false);
+  }
+
+  function SuccessTrue() {
+    setSuccess(true);
+  }
+
+  function FailureTrue() {
+    setFailure(true);
   }
 
   // delete from towatchlist
@@ -44,7 +61,23 @@ export default function WatchList() {
 
   return (
     <>
-      <WatchListTable movies={MovieList} />
+      {success && (
+        <div className="success">
+          <p>successfully added movie to completed watch list</p>
+          <button onClick={handleSuccessClose}>X</button>
+        </div>
+      )}
+      {failure && (
+        <div className="failure">
+          <p>Failed to Add Movie</p>
+          <button onClick={handleFailureClose}>X</button>
+        </div>
+      )}
+      <WatchListTable
+        movies={MovieList}
+        Success={SuccessTrue}
+        Failed={FailureTrue}
+      />
     </>
   );
 }

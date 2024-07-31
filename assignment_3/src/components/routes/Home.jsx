@@ -8,6 +8,8 @@ function Home() {
   const [MovieList, setMovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [genreType, setGenreType] = useState("");
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   //define function to fetch all movies
   async function fetchMovies() {
     let baseUrl =
@@ -60,12 +62,42 @@ function Home() {
   function getGenreMovies(searchGenre) {
     setGenreType(searchGenre);
   }
+  function closeError() {
+    setError(false);
+  }
+
+  function errorTrue() {
+    setError(true);
+  }
+
+  function successTrue() {
+    setSuccess(true);
+  }
+  function closeSuccess() {
+    setSuccess(false);
+  }
 
   return (
     <>
+      {success && (
+        <div className="success">
+          <p>successfully added movie to completed watch list</p>
+          <button onClick={closeSuccess}>X</button>
+        </div>
+      )}
+      {error && (
+        <div className="failure">
+          <p>Failed! Movie Already In WatchList</p>
+          <button onClick={closeError}>X</button>
+        </div>
+      )}
       <FilterGenre searchGenre={getGenreMovies} />
       <SearchForm search={getMovies} />
-      <MovieGrid movies={MovieList} />
+      <MovieGrid
+        movies={MovieList}
+        setError={errorTrue}
+        setSuccess={successTrue}
+      />
     </>
   );
 }

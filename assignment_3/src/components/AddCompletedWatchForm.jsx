@@ -5,13 +5,14 @@ import { useContext } from "react";
 import { AuthContext } from "./Authentication";
 import { useNavigate } from "react-router-dom";
 
-function AddCompletedWatchForm({ movie, DeleteFromToWatch }) {
+function AddCompletedWatchForm({ movie, DeleteFromToWatch, Success, Failed }) {
   //state variables
   const [isVisible, setIsVisible] = useState(false);
   const [notes, setNotes] = useState("");
   const [rating, setRating] = useState(0);
   const { apiKey } = useContext(AuthContext);
   const { isAuth } = useContext(AuthContext);
+
   const navigate = useNavigate();
   // const [lastDateWatched, setLastDateWatched] = useState();
 
@@ -38,8 +39,10 @@ function AddCompletedWatchForm({ movie, DeleteFromToWatch }) {
 
       const data = await response.json();
       console.log("Movie added successfully:", data);
+      Success();
       DeleteFromToWatch(movie.movieID);
     } catch (error) {
+      Failed();
       console.error("Error adding movie:", error);
     }
   };
@@ -63,45 +66,47 @@ function AddCompletedWatchForm({ movie, DeleteFromToWatch }) {
     setRating(ev.target.value);
   }
   return (
-    <div>
-      <button onClick={handleButtonClick}>
-        <h3> Watched It!</h3>
-      </button>
+    <>
+      <div className="watchedIt">
+        <button onClick={handleButtonClick}>
+          <h3> Watched It!</h3>
+        </button>
 
-      {isVisible && (
-        <div className="popup-form">
-          <div className="popup-form-content">
-            <button className="close" onClick={handleClose}>
-              x
-            </button>
-            <h2 className="WatchListFont">Watched It!</h2>
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                setIsVisible();
-                handleFullAdd(notes, rating);
-              }}
-            >
-              <div className="container">
-                <input onChange={changeRating} type="number" />
-                <label htmlFor="number">Rating / 10</label>
-              </div>
-              <div className="container">
-                <textarea
-                  className="notes"
-                  name="notes"
-                  onChange={handleNoteChange}
-                ></textarea>
-                <label htmlFor="notes">Notes</label>
-              </div>
-              <button className="submit" type="submit">
-                Submit
+        {isVisible && (
+          <div className="popup-form">
+            <div className="popup-form-content">
+              <button className="close" onClick={handleClose}>
+                x
               </button>
-            </form>
+              <h2 className="WatchListFont">Watched It!</h2>
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setIsVisible();
+                  handleFullAdd(notes, rating);
+                }}
+              >
+                <div className="container">
+                  <input onChange={changeRating} type="number" />
+                  <label htmlFor="number">Rating / 10</label>
+                </div>
+                <div className="container">
+                  <textarea
+                    className="notes"
+                    name="notes"
+                    onChange={handleNoteChange}
+                  ></textarea>
+                  <label htmlFor="notes">Notes</label>
+                </div>
+                <button className="submit" type="submit">
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 

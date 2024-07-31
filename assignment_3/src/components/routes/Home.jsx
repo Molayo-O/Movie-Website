@@ -1,5 +1,6 @@
 import MovieGrid from "../MovieGrid";
 import { useState, useEffect } from "react";
+import "../../styles/Home.css";
 import SearchForm from "../searchForm";
 import FilterGenre from "../FilterGenre";
 
@@ -13,68 +14,41 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 54;
 
-  //define function to fetch all movies
+  // Fetch movies based on search term, genre, and current page
   async function fetchMovies(currentpage) {
-    let baseUrl =
-      `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?page=${currentpage}&limit=${pageSize}`;
-    const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
-    const jsonResponse = await resp.json();
-    const movies = jsonResponse;
-    setMovieList(movies);
-  }
-
-  //define function to fetch specifc movies
-  async function fetchSpecificMovie(title, currentpage) {
-    const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?title=${title}&page=${currentpage}&limit=${pageSize}`;
-    const resp = await fetch(url, { headers: { "X-API-Key": "hi" } });
-    const jsonResponse = await resp.json();
-    //Dynamically update state based on fetched data
-    setMovieList(jsonResponse.length > 0 ? jsonResponse : []);
-  }
-
-  //On searchTerm change, dynamically render movies based on title, if defined
-  useEffect(() => {
+    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?page=${currentpage}&limit=${pageSize}`;
     if (searchTerm) {
-      fetchSpecificMovie(searchTerm, currentPage);
-    } else {
-      fetchMovies(currentPage);
+      baseUrl += `&title=${searchTerm}`;
+    } else if (genreType && genreType !== "x") {
+      baseUrl += `&genres=${genreType}`;
     }
-  }, [searchTerm]);
-
-  async function fetchMovieByGenre(genreType, currentpage) {
-    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/movies/?genres=${genreType}&page=${currentpage}&limit=${pageSize}`;
     const resp = await fetch(baseUrl, { headers: { "X-API-Key": "hi" } });
     const jsonResponse = await resp.json();
-    const movies = jsonResponse;
-    setMovieList(movies);
+    setMovieList(jsonResponse);
   }
 
-  useEffect(() => {
-    if (genreType && genreType != "x") {
-      fetchMovieByGenre(genreType, currentPage);
-    } else {
-      fetchMovies(currentPage);
-    }
-  }, [genreType]);
-
+  //On searchTerm change, dynamically render movies based on all state variables
   useEffect(() => {
     fetchMovies(currentPage);
-  }, [currentPage]);
+  }, [searchTerm, genreType, currentPage]);
 
   //Function to handleSubmit
   function getMovies(searchFor) {
     setSearchTerm(searchFor);
-  }
-
-  //Function to handle pagination
-  function changePage(newPage) {
-    //validate pageNumber
-    setCurrentPage(newPage);
+    //reset pages
+    setCurrentPage(1);
   }
 
   function getGenreMovies(searchGenre) {
     setGenreType(searchGenre);
+    //reset pages
+    setCurrentPage(1);
   }
+  //Function to handle pagination
+  function changePage(newPage) {
+    setCurrentPage(newPage);
+  }
+
   function closeError() {
     setError(false);
   }

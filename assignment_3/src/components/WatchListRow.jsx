@@ -10,8 +10,8 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
     updatePriority(movie.movieID, priority);
   }
 
-  function HandleDelete(movieID) {
-    DeleteMovie(movieID);
+  function HandleDelete() {
+    DeleteMovie(movie.movieID);
   }
 
   return (
@@ -29,11 +29,10 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
         <input type="number" value={priority} onChange={changePriority} />
       </td>
       <td>
-        <button
-          type="submit"
+        <button className="delete-button"
           name="delete"
-          onSubmit={HandleDelete(movie.movieID)}
-        ></button>
+          onClick={HandleDelete}
+        >Delete</button>
       </td>
 
     </tr>

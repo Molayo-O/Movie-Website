@@ -4,19 +4,18 @@ import { AuthContext } from "./Authentication";
 
 export function WatchListTable({ movies }) {
   const { apiKey } = useContext(AuthContext);
-
+  const [toWatchList, setToWatchList] = useState(movies);
 
   async function DeleteMovie(movieID) {
-    const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieId}/priority`;
-    const formData = new URLSearchParams();
+    const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieID}`;
     const resp = await fetch(url, {
-      method: "",
+      method: "DELETE",
       headers: {
-        "X-API-Key": apiKey,
-      },
-      body: formData,
-      // body: JSON.stringify({ [endpoint]: newValue }),
+        "X-API-Key": apiKey
+      }
     });
+    //update state
+    setToWatchList(toWatchList.filter(movie => movie.movieID !== movieID));
   }
 
 
@@ -36,7 +35,7 @@ export function WatchListTable({ movies }) {
   }
   return (
     <>
-      <h1 className="Heading">Completed WatchList</h1>
+      <h1 className="Heading">WatchList</h1>
 
       <table className="CompletedWatch">
         <thead>

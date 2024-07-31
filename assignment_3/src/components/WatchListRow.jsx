@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddCompletedWatchForm from "./AddCompletedWatchForm";
 
-function WatchListRow({ movie, updatePriority, DeleteMovie }) {
+function WatchListRow({ movie, updatePriority, DeleteMovie, Success, Failed }) {
   const [priority, setPriority] = useState(movie.priority);
 
   function changePriority(ev) {
@@ -35,7 +35,12 @@ function WatchListRow({ movie, updatePriority, DeleteMovie }) {
         </button>
       </td>
       <td>
-        <AddCompletedWatchForm movie={movie} DeleteFromToWatch={HandleDelete} />
+        <AddCompletedWatchForm
+          movie={movie}
+          DeleteFromToWatch={HandleDelete}
+          Success={Success}
+          Failed={Failed}
+        />
       </td>
     </tr>
   );

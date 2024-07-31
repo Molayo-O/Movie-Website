@@ -2,7 +2,7 @@ import WatchListRow from "./WatchListRow";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./Authentication";
 
-export function WatchListTable({ movies }) {
+export function WatchListTable({ movies, Success, Failed }) {
   const { apiKey } = useContext(AuthContext);
   const [toWatchList, setToWatchList] = useState(movies);
 
@@ -49,6 +49,8 @@ export function WatchListTable({ movies }) {
               movie={movie}
               updatePriority={updatePriority}
               DeleteMovie={DeleteMovie}
+              Success={Success}
+              Failed={Failed}
               // updateMovieDetail={updateMovieDetail}
             />
           ))}

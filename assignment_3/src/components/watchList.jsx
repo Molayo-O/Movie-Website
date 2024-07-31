@@ -6,7 +6,6 @@ export default function WatchList() {
   // Authentication
   const { apiKey } = useContext(AuthContext);
   // const { isAuth } = useContext(AuthContext);
-
   // ******************
 
   const [MovieList, setMovieList] = useState([]);
@@ -41,7 +40,7 @@ export default function WatchList() {
 
   useEffect(() => {
     fetchMovies(apiKey);
-  }, []);
+  }, [MovieList]);
 
   return (
     <>

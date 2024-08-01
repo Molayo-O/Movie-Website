@@ -5,7 +5,9 @@ import AuthContextProvider from "./components/Authentication";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./styles/Layout.css";
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL,
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

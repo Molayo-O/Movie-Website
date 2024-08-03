@@ -8,7 +8,7 @@ The main features include:
 
 - Exploring thousands of films from the IMDB database, with details on the rating, plot, runtime, and more.
 - Creating a personal profile to keep track of movies you've watched and rate/review them. Your watchlist allows you to keep track of movies that you want to watch.
-- Search and filtering features allow you to easily find movies by genre, year, top rating, and other criteria.
+- Search and filtering, which allow you to easily find movies by genre, year, top rating, and other criteria.
 
 The site was built using modern web technologies including:
 

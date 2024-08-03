@@ -5,35 +5,56 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Authentication";
 // import Cookies from "js-cookie";
 
-const APIKEY =
-  "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
-// "1234";
-
 export default function Login() {
   //initialize state variables
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [redirect, setRedirect] = useState(false); // State to handle redirection
+
   //initalize context variables
   const { setIsAuth, setApiKey } = useContext(AuthContext);
+
+  //Function to handle Login
+  async function handleLogin() {
+    const formData = new URLSearchParams();
+    formData.append("username", username);
+    formData.append("password", password);
+
+    try {
+      const response = await fetch(
+        "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/authentication/login",
+        {
+          method: "POST",
+          // headers: {
+          // },
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Set API Key in context
+        setApiKey(result.apiKey);
+        // Set user as authenticated
+        setIsAuth(true);
+        // Set redirect to true to trigger navigation
+        setRedirect(true);
+      } else {
+        setErrors(result.errors);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      setErrors({ error: "An error occurred. Please try again" });
+    }
+  }
 
   //Function to handleSubmit
   function handleSubmit(event) {
     event.preventDefault();
     setErrors({});
-
-    //Add simple logic for empty fields
-    if (username === "" || password === "") {
-      setErrors({
-        empty_username: username === "" ? "Please provide a username" : "",
-        empty_password: password === "" ? "Please provide a password" : "",
-      });
-    } else {
-      setApiKey(APIKEY); //set API Key in context
-      setIsAuth(true); //Set user as authenticated
-      setRedirect(true); // Set redirect to true to trigger navigation
-    }
+    handleLogin();
   }
 
   if (redirect) {

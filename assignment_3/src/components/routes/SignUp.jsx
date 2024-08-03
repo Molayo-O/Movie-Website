@@ -3,46 +3,58 @@ import "../../styles/login.css";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../Authentication";
 
-const APIKEY =
-  "f244eab81fcfb8dffadb998553d964337c6ed64984398fa6e96d6bd39387ae0917";
-
 export default function SignUp() {
   //initialize state variables
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
   const [errors, setErrors] = useState({});
   const [redirect, setRedirect] = useState(false);
 
-  // Initialize context variables
-  const { setIsAuth, setApiKey } = useContext(AuthContext);
+  //function to handle Account Creation
+  async function handleAccount() {
+    const formData = new URLSearchParams();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password1", password1);
+    formData.append("password2", password2);
+
+    try {
+      const response = await fetch(
+        "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/authentication/createAccount",
+        {
+          method: "POST",
+          // headers: {
+          // },
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Set redirect to true to trigger navigation
+        setRedirect(true);
+      } else {
+        //retrieve errors from api response
+        setErrors(result.errors);
+      }
+    } catch (error) {
+      console.error("Error creating Account:", error);
+      setErrors({ error: "An error occurred. Please try again" });
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to="/Login" />; // Redirect user to login page
+  }
 
   // Function to handleSubmit
   function handleSubmit(event) {
     event.preventDefault();
     setErrors({});
-
-    // Add simple logic for empty fields and password match
-    if (username === "" || password === "" || confirmPassword === "") {
-      setErrors({
-        empty_username: username === "" ? "Please provide a username" : "",
-        empty_password: password === "" ? "Please provide a password" : "",
-        empty_confirmPassword:
-          confirmPassword === "" ? "Please confirm your password" : "",
-      });
-    } else if (password !== confirmPassword) {
-      setErrors({
-        password_match: "Passwords do not match",
-      });
-    } else {
-      setApiKey(APIKEY); // Set API Key in context
-      setIsAuth(true); // Set user as authenticated
-      setRedirect(true); // Set redirect to true to trigger navigation
-    }
-  }
-
-  if (redirect) {
-    return <Navigate to="/MyAccount/Watchlist" />; // Redirect user to account page
+    handleAccount();
   }
 
   return (
@@ -66,6 +78,28 @@ export default function SignUp() {
         {errors.empty_username && (
           <span className="error">{errors.empty_username}</span>
         )}
+        {errors.invalid_username && (
+          <span className="error">{errors.invalid_username}</span>
+        )}
+        {errors.user_found && (
+          <span className="error">{errors.user_found}</span>
+        )}
+      </div>
+      <div className="email">
+        {/*email input*/}
+        <label htmlFor="email">Email:</label>
+        <input
+          className="login-input"
+          type="email"
+          id="email"
+          value={email}
+          onChange={(ev) => setEmail(ev.target.value)}
+        />
+        {/* Add error checks and display for email */}
+        {errors.empty_email && (
+          <span className="error">{errors.empty_email}</span>
+        )}
+        {errors.email && <span className="error">{errors.email}</span>}
       </div>
       <div className="password">
         {/* Password input */}
@@ -75,15 +109,12 @@ export default function SignUp() {
           type="password"
           id="password"
           name="password"
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
+          value={password1}
+          onChange={(ev) => setPassword1(ev.target.value)}
         />
         {/* Add error checks and display for password */}
-        {errors.empty_password && (
-          <span className="error">{errors.empty_password}</span>
-        )}
-        {errors.password_mismatch && (
-          <span className="error">{errors.password_mismatch}</span>
+        {errors.p_strength && (
+          <span className="error">{errors.p_strength}</span>
         )}
       </div>
       <div className="confirm-password">
@@ -94,12 +125,11 @@ export default function SignUp() {
           type="password"
           id="confirm-password"
           name="confirm-password"
-          value={confirmPassword}
-          onChange={(ev) => setConfirmPassword(ev.target.value)}
+          value={password2}
+          onChange={(ev) => setPassword2(ev.target.value)}
         />
-        {/* Add error checks and display for confirm password */}
-        {errors.empty_confirmPassword && (
-          <span className="error">{errors.empty_confirmPassword}</span>
+        {errors.p_match && (
+          <span className="error">{errors.password_match}</span>
         )}
       </div>
       <button id="submit" name="submit" type="submit">

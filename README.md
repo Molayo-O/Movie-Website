@@ -1,6 +1,6 @@
 # WatchedIT! - Movie Reviewer Website 
 
-WatchedIT is a web application  provides users with a platform to explore, review, and rate a vast collection of movies sourced from IMDB's movie database. With WatchedIT, you can build your own personal movie collection.
+WatchedIT is a web application  that provides users with a platform to explore, review, and rate a vast collection of movies sourced from IMDB's movie database. With WatchedIT, you can build your own personal movie collection.
 
 ## About the Project
 

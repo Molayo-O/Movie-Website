@@ -4,6 +4,11 @@
     margin-bottom: 2em;
 }
 
+.noMovies-message {
+    text-align: center;
+    font-size: 1.25em;
+    color: #ffffff;
+}
 
 .pagination {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

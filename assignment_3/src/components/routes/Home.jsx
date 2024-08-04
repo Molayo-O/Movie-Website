@@ -98,18 +98,20 @@ function Home() {
           <button onClick={closeError}>X</button>
         </div>
       )}
-      <Filters
-        getGenreMovies={getGenreMovies}
-        getMoviesByRating={getMoviesByRating}
-        getMoviesByYear={getMoviesByYear}
-      />
-      <SearchForm search={getMovies} />
+      <div className="filters-container">
+        <Filters
+          getGenreMovies={getGenreMovies}
+          getMoviesByRating={getMoviesByRating}
+          getMoviesByYear={getMoviesByYear}
+        />
+        <SearchForm search={getMovies} />
+      </div>
       <MovieGrid
         movies={MovieList}
         setError={errorTrue}
         setSuccess={successTrue}
       />
-      <Pagination currentPage = {currentPage} changePage = {changePage}/>
+      <Pagination currentPage={currentPage} changePage={changePage} />
     </>
   );
 }

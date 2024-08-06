@@ -23,4 +23,4 @@ The site was built using modern web technologies including:
 
 ### Link to Website
 
-<http://127.0.0.1:5173/~molayoogunfowora/3430/assn/assignment_3-loki>
+<https://loki.trentu.ca/~molayoogunfowora/3430/assn/assignment_3-loki>

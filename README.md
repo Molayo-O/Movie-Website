@@ -23,4 +23,4 @@ The site was built using modern web technologies including:
 
 ### Link to Website
 
-<https://loki.trentu.ca/~molayoogunfowora/3430/assn/assignment_3-loki>
+<https://molayo-o.github.io/Movie-Website/>

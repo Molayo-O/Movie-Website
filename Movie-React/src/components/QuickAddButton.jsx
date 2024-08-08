@@ -61,6 +61,7 @@ export function QuickAddButton({ movie, setError, setSuccess }) {
   return (
     <>
       <button id="QuickAdd" onClick={handleQuickAdd}>
+        Quick Add
         <FontAwesomeIcon className="addIcon" icon={faPlus} />
       </button>
     </>

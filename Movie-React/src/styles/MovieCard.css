@@ -4,20 +4,10 @@
   align-items: center;
   justify-content: center;
   margin: 1em;
+  border-radius: 0.75em;
 }
 
-#Poster {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  height: auto;
-  margin: 0;
-  padding: 0;
-}
-
-#Poster::after {
+.MovieCard::after {
   content: "";
   position: absolute;
   top: 0;
@@ -28,14 +18,15 @@
   opacity: 0; /* Start invisible */
   transition: opacity 0.3s ease; /* Smooth transition */
   pointer-events: none; /* Allow interaction with the image */
-  border-radius: 1em;
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
 }
 
-#Poster:hover::after {
+.MovieCard:hover::after {
   opacity: 1; /* Show overlay on hover */
 }
 
-#Poster:hover {
+.MovieCard:hover {
   transform: scale(1.03);
   border-radius: 0.7em;
 }
@@ -52,11 +43,16 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
   opacity: 0; /* Start invisible */
   transition: opacity 0.3s ease; /* Smooth transition */
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-end; */
   /* padding: 0.5em; */
 }
 
@@ -69,7 +65,7 @@
   color: white;
 }
 
-#Poster:hover .text {
+.MovieCard:hover .text {
   opacity: 1; /* Show text on hover */
   z-index: 1;
 }
@@ -77,21 +73,6 @@
 .MovieCard a {
   margin: 0;
   padding: 0;
-}
-
-.stars {
-  color: gold;
-  font-size: 2em;
-}
-
-/* .MovieCard:hover{
-    transform: scale(1.03);
-    box-shadow:  0 0 0.5em white;
-    border-radius: 0.7em;
-  } */
-
-.MovieCard img {
-  border-radius: 1em;
 }
 
 .lora,
@@ -105,16 +86,18 @@ p .lora {
 
 .movieTitle {
   width: 50%;
-  margin: auto;
+  margin: 0.5em;
+  margin-top: 3em;
   margin-bottom: 1em;
+  align-self: center;
+  justify-self: flex-start;
 }
 
 #QuickAdd {
-  position: absolute;
-  width: 2%;
+  width: 100%;
+  background-color: #ff9500;
   padding: 0.5em;
-  background-color: #ff950000;
-  color: rgba(255, 255, 255, 0.359);
+  color: black;
   border: none;
   border-radius: 0.3em;
   font-size: 0.75em;
@@ -139,8 +122,37 @@ p .lora {
   text-align: center;
 }
 
+#moreInfo {
+  background-color: rgba(230, 230, 230, 0.791);
+  padding: 0.5em;
+  margin: 0.5em;
+  color: rgb(3, 3, 3);
+  border: none;
+  border-radius: 0.3em;
+  font-size: 0.75em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+#moreInfo:hover {
+  background-color: rgba(255, 255, 255, 0.997);
+}
 
 #QuickAdd:hover {
-  background-color: #ff9500;
+  background-color: #fca429;
   color: rgb(255, 255, 255);
+}
+
+#QuickAdd svg {
+  transition: transform 0.3s ease;
+}
+
+#QuickAdd:hover svg {
+  transform: rotate(90deg);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
 }

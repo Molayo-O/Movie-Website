@@ -16,7 +16,7 @@ export default function Login() {
   const { setIsAuth, setApiKey } = useContext(AuthContext);
 
   //Function to handle Login
-  async function handleLogin() {
+  async function handleLogin(username, password) {
     const formData = new URLSearchParams();
     formData.append("username", username);
     formData.append("password", password);
@@ -50,11 +50,14 @@ export default function Login() {
     }
   }
 
+  function handleTestUser() {
+    handleLogin("testUser", "qwertyuiop1234567890");
+  }
   //Function to handleSubmit
   function handleSubmit(event) {
     event.preventDefault();
     setErrors({});
-    handleLogin();
+    handleLogin(username, password);
   }
 
   if (redirect) {
@@ -104,6 +107,9 @@ export default function Login() {
       </div>
       <button id="submit" name="submit" type="submit">
         Login
+      </button>
+      <button type="button" className="test-btn" onClick={handleTestUser}>
+        Continue as Guest
       </button>
       <Link to={"/SignUp"}>Create-Account</Link>
     </form>

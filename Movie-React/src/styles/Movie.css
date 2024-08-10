@@ -69,6 +69,7 @@ h3 {
   font-weight: 500;
 }
 
+
 /* Changed selector to be specific to this page 
 (threw off rating alignment on main page) */
 .MovieDetails p {
@@ -85,19 +86,19 @@ h3 {
 }
 
 .rating-container li {
-  font-size: 1.25em;
-  list-style: none;
-  margin-right: 4.25em;
+    font-size: 1.25em;
+    list-style: none;
+    margin-right: 4.25em;
 }
 .rating {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .rating:nth-of-type(3) svg:hover {
-  color: gold;
+    color: gold;
 }
 
 /*stars icon*/
@@ -146,120 +147,11 @@ h3 {
   font-weight: 500;
 }
 
-.popup-form {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
-
-.popup-form-content {
-  border-radius: 1em;
-  position: relative;
-  color: white;
-  box-shadow: 0 0 0 0.25em white;
-  background: linear-gradient(-90deg, #23262d, #555a59);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
-.popup-form-content input {
-  background-color: rgb(197, 197, 197);
-  color: black;
-  font-weight: 600;
-}
-
-.popup-form-content label,
-.popup-form-content input {
-  font-size: 0.9em;
-}
-
-.popup-form-content form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 25em;
-  height: 18em;
-  margin: 0;
-  margin-bottom: 2em;
-}
-
-.popup-form-content h2 {
-  font-size: 2.4em;
-  margin-top: 0.2em;
-  margin-bottom: 1.6em;
-}
-
-.popup-form-content form label {
-  font-size: 0.8em;
-  color: rgb(172, 172, 172);
-  padding-left: 0.3em;
-  padding: 0.3em;
-}
-
-.popup-form-content .container {
-  display: flex;
-  flex-direction: column;
-  margin: 0.2em;
-}
-
-.popup-form-content .close {
-  border-radius: 1;
-  font-weight: 800;
-  color: black;
-  background-color: grey;
-  padding: 0.5em 1em;
-  margin: 0;
-  font-size: 0.8em;
-  position: absolute;
-  align-self: flex-end;
-  right: 1em;
-  top: 1em;
-}
-
-.popup-form-content .submit {
-  margin: 0;
-  margin-top: 1.5em;
-  font-size: 0.8em;
-}
-
-.popup-form-content .submit:hover {
-  color: rgb(158, 158, 158);
-  box-shadow: 0 0 0 0.1em white;
-}
-.popup-form-content .close:hover {
-  color: rgb(157, 157, 157);
-  box-shadow: 0 0 0 0.1em white;
-}
-
-.WatchListFont {
-  font-family: "Edu AU VIC WA NT Hand", cursive;
-  font-optical-sizing: auto;
-  font-weight: 600;
-}
-
-.notes {
-  width: 25em;
-  height: 15em;
-  background-color: rgb(187, 187, 187);
-  border-radius: 1em;
-  padding: 1em;
-}
-
-.success {
+.success{
   /* position: fixed;
   top: 0;
   left: 0; */
-  background-color: rgb(129, 204, 129);
+background-color: rgb(129, 204, 129);
   display: flex;
   border-radius: 1em;
   justify-content: center;
@@ -268,11 +160,11 @@ h3 {
   width: 30em;
 }
 
-.failure {
+.failure{
   /* position: fixed;
   top: 0;
   left: 0; */
-  background-color: rgb(186, 105, 105);
+background-color: rgb(186, 105, 105);
   display: flex;
   border-radius: 1em;
   justify-content: center;
@@ -281,36 +173,33 @@ h3 {
   width: 30em;
 }
 
-.failure button,
-.success button {
+.failure button, .success button{
   color: white;
   background-color: black;
   border: none;
   border-radius: 0.25em;
 }
 
-.failure p,
-.success p {
+.failure p,.success p{
   padding-right: 2em;
 }
 
-.failure button:hover,
-.success button:hover {
+.failure button:hover, .success button:hover{
   color: #555a59;
   background-color: white;
 }
 
-.watchedIt h3 {
+.watchedIt h3{
   color: black;
   font-weight: 800;
 }
-.watchedIt button {
+.watchedIt button{
   background-color: rgb(196, 196, 196);
   border: none;
   border-radius: 1em;
 }
 
-.watchedIt button:hover {
+.watchedIt button:hover{
   color: rgb(183, 183, 183);
-  background-color: orange;
+background-color: orange;
 }

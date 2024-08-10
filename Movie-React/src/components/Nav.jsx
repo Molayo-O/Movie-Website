@@ -5,7 +5,7 @@ function Nav() {
     <>
       <nav className="Navbar">
         <NavLink to="/">
-          <h1>Watched It!</h1>
+          <h1>Watched It</h1>
         </NavLink>
 
         <ul className="Navlinks">

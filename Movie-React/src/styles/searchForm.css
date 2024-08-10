@@ -5,7 +5,7 @@
 }
  */
 
- form {
+form {
     display: flex;
     align-items: center;
     position: relative;
@@ -38,5 +38,5 @@ input:focus {
 /*style placeholder text*/
 ::placeholder {
     color: rgba(232, 225, 225, 0.803);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }

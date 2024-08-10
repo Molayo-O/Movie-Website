@@ -1,31 +1,30 @@
 .filterOptions {
-    width: 30%;
-  }
-  
-  .filterOptions select {
-    width: 100%;
-    color: white;
-    background-color: #161718;
-    font-size: 1em;
-    padding: 0.5em;
-  }
-  
-  .Filters {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
-    background-color: black;
-  }
-  
-  .titleFilter {
-      margin: 1em 0.5em;
-      width: 20%;
-  }
-  
-  /* #orderRating {
-      
-      padding: 0.5em 0.3em;
-  } */
-  
+  width: 30%;
+}
+
+.filterOptions select {
+  width: 100%;
+  color: white;
+  background-color: #161718;
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.Filters {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
+
+.titleFilter {
+    margin: 1em 0.5em;
+    width: 20%;
+}
+
+/* #orderRating {
+    
+    padding: 0.5em 0.3em;
+} */

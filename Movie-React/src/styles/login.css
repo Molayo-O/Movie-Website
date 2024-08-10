@@ -1,94 +1,93 @@
 /* style form */
 .login-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 25em;
-    margin: 2em auto;
-    background: linear-gradient(-90deg, #23262d, #555a59);
-    border-radius: 1em;
-    padding: 3em;
-    color: white;
-  }
-  
-  .Login-Heading {
-    font-size: 1.5em;
-    grid-column: 1 / span 2; /* Fix: span 2 columns */
-    justify-self: center;
-    text-align: center;
-    margin: 0.5em;
-    padding: 1em;
-  }
-  
-  /* all inputs */
-  .login-input {
-    display: block;
-    border-style: none;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    padding: 1em;
-    font-size: 1em;
-    margin-bottom: 1em;
-    color: black;
-    background-color: white;
-  }
-  
-  /* style username div */
-  .username,
-  .email,
-  .password,
-  .confirm-password {
-    position: relative;
-    grid-column: 1 / span 2;
-    width: 90%;
-  }
-  
-  .test-btn {
-    border: none;
-    padding: 0.5em;
-    grid-column: 2;
-    border-radius: 0.7em;
-    margin-bottom: 2em;
-  }
-  
-  .test-btn:hover {
-    background-color: #2d2327;
-    color: white;
-  }
-  
-  /* create button */
-  #submit {
-    display: block;
-    width: 100%;
-    padding: 1em;
-    font-weight: 600;
-    margin: 2em auto;
-    text-align: center;
-    color: white;
-    background-color: rgb(65, 66, 66);
-    border: none;
-    border-radius: 2em;
-    grid-column: 1 / span 2;
-    align-self: center;
-  }
-  
-  #submit:hover {
-    background: linear-gradient(180deg, #2d2327, #7a7768);
-  }
-  
-  /* anchor tags in form */
-  .login-form a {
-    text-align: center;
-    grid-column: 1 / span 2;
-    font-weight: 500;
-    color: white;
-  }
-  
-  /* hide error */
-  .hidden {
-    display: none;
-  }
-  
-  .error {
-    color: #ba1b1d;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 25em;
+  margin: 2em auto;
+  background: linear-gradient(-90deg, #23262d, #555a59);
+  border-radius: 1em;
+  padding: 3em;
+  color: white;
+}
+
+.Login-Heading {
+  font-size: 1.5em;
+  grid-column: 1 / span 2; /* Fix: span 2 columns */
+  justify-self: center;
+  text-align: center;
+  margin: 0.5em;
+  padding: 1em;
+}
+
+/* all inputs */
+.login-input {
+  display: block;
+  border-style: none;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding: 1em;
+  font-size: 1em;
+  margin-bottom: 1em;
+  color: black;
+  background-color: white;
+}
+
+/* style username div */
+.username,
+.email,
+.password,
+.confirm-password {
+  position: relative;
+  grid-column: 1 / span 2;
+  width: 90%;
+}
+
+.test-btn {
+  border: none;
+  padding: 0.5em;
+  grid-column: 2;
+  border-radius: 0.7em;
+  margin-bottom: 2em;
+}
+
+.test-btn:hover {
+  background-color: #2d2327;
+  color: white;
+}
+
+/* create button */
+#submit {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  font-weight: 600;
+  margin: 2em auto;
+  text-align: center;
+  color: white;
+  background-color: rgb(65, 66, 66);
+  border: none;
+  border-radius: 2em;
+  grid-column: 1 / span 2;
+  align-self: center;
+}
+
+#submit:hover {
+  background: linear-gradient(180deg, #2d2327, #7a7768);
+}
+
+/* anchor tags in form */
+.login-form a {
+  text-align: center;
+  grid-column: 1 / span 2;
+  font-weight: 500;
+  color: white;
+}
+
+/* hide error */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #ba1b1d;
+}

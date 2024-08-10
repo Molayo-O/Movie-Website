@@ -1,0 +1,251 @@
+.quick-actions {
+  margin: 0.5em auto;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.quick-actions li {
+  position: relative;
+  opacity: 0;
+  list-style-type: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.882);
+  padding: 0.2em 0.35em;
+  border-radius: 1em;
+  margin-right: 1.5em;
+}
+
+.quick-actions li a {
+  color: white;
+}
+
+.MovieCard:hover .quick-actions li {
+  cursor: pointer;
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+#priority-icon {
+  padding: 0.25em 0.5em;
+  opacity: 1;
+  box-shadow: 0 0 0.8em 0.5em rgba(0, 0, 0, 0.303);
+  position: relative;
+}
+
+#priority-icon input {
+  position: absolute;
+  padding-top: 0.8em;
+  padding-left: 0.5em;
+  bottom: -1.65em;
+  left: 1%;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+  transition: opacity 0.3s ease;
+  width: 100%;
+  text-align: left;
+}
+
+#priority-icon:hover input {
+  opacity: 1; /* Show input on hover and when focused */
+  pointer-events: auto; /* Allow interaction */
+}
+
+.text {
+  z-index: 1;
+}
+
+.text .toWatchTitle {
+  width: 50%;
+  margin: auto;
+  align-self: center;
+}
+
+/*Add description of each icon*/
+.quick-actions li span,
+.quick-actions li input {
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  bottom: -3.5em;
+  left: -40%;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.184);
+  border-radius: 0.5em;
+  font-size: 0.7em;
+  padding: 0.2em 0.5em;
+  transition: opacity 0.3s ease;
+}
+
+.quick-actions li:hover span {
+  opacity: 1;
+}
+
+/* Popup form styling */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.popup-form.active {
+  opacity: 1;
+  pointer-events: auto; /*Transition doesn't work*/
+}
+
+.popup-form-content {
+  border-radius: 1em;
+  position: relative;
+  color: white;
+  box-shadow: 0.1em 0.15em 0.3em 0.1em rgba(255, 255, 255, 0.229);
+  background: linear-gradient(90deg, #354f52, #2f3e46);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  z-index: 5;
+}
+
+.popup-form-content input,
+.popup-form-content textarea {
+  background-color: rgb(197, 197, 197);
+  color: black;
+  font-weight: 600;
+  border: none; /* Remove default border */
+  border-radius: 0.5em;
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.popup-form-content label {
+  font-size: 0.9em;
+  color: rgb(172, 172, 172);
+  margin-top: 0.5em;
+}
+
+.popup-form-content form {
+  width: 100%; /* Ensure the form takes full width */
+  margin: 0;
+  margin-bottom: 2em;
+  flex-direction: column;
+}
+
+.popup-form-content h3 {
+  font-family: sans-serif;
+  font-size: 2em;
+  margin: 0.2em 0 1.6em;
+}
+
+.popup-form-content .container {
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em 0;
+  width: 100%; /* Ensure containers take full width */
+}
+
+.popup-form-content .close {
+  border: none;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.545);
+  background-color: transparent;
+  font-size: 1.5em;
+  position: absolute;
+  right: 0.5em;
+  top: 0.1em;
+  cursor: pointer;
+}
+
+.popup-form-content .submit {
+  font-family: Helvetica;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  background-color: #2cda9d4e;
+  color: white;
+  margin: 1.5em 0 0;
+  font-size: 0.8em;
+  border-radius: 1em;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+.popup-form-content .submit:hover {
+  box-shadow: 0em 0em 0.4em 0em rgba(255, 255, 255, 0.175);
+  color: rgb(255, 254, 254);
+}
+
+.popup-form-content .close:hover {
+  color: rgb(255, 253, 253);
+}
+
+.WatchListFont {
+  font-family: sans-serif;
+  margin: 0em;
+  text-align: left;
+  font-weight: 500;
+  width: 100%;
+}
+
+.container input {
+  background-color: #2f3e46;
+}
+
+.notes {
+  min-width: 30em;
+  height: 15em;
+  background-color: rgb(187, 187, 187);
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.Rating-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container textarea::placeholder {
+  color: rgba(0, 0, 0, 0.637);
+}
+
+.container label {
+  color: rgba(255, 255, 255, 0.659);
+}
+
+.title-container {
+  width: 100%;
+}
+
+.title-container h2 {
+  margin: 0.5em auto;
+}
+
+.filters-watchlist-container {
+  border: 0.1em solid rgba(255, 255, 255, 0.097);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0em 1em 1em 1em;
+  box-shadow: 0.1em 0.2em 0.4em 0em rgba(255, 255, 255, 0.089);
+
+}
+
+.filters-watchlist-container .Filters {
+  margin-right: 4em;
+}
+
+.Headings-toWatch {
+  margin-bottom: 0.5em;
+}

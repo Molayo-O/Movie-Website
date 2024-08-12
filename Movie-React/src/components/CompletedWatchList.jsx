@@ -2,31 +2,52 @@ import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./Authentication";
 import MovieRow from "./completedMovieRow";
 import { Link } from "react-router-dom";
+import Filters from "./Filters";
 import { Fragment } from "react";
+import AddCompletedWatchForm from "./AddCompletedWatchForm";
 import "../styles/completedWatch.css";
+import "../styles/ToWatchList.css";
 
 export default function CompletedWatchlist() {
-  //initalize state variables
+  // Initialize state variables
   const [List, setMovieList] = useState([]);
   const { apiKey } = useContext(AuthContext);
+  const [genreType, setGenreType] = useState("");
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const [ratingOrder, setRatingOrder] = useState("DESC");
+  const [year, setYear] = useState("");
+  const [date, setDateOrder] = useState("");
+  const [timesOrder, setTimesWatchedOrder] = useState("");
 
-  //define function to fetch all completed movies
-  async function fetchCompletedMovies() {
-    let baseUrl =
-      "https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries";
+  // Fetch all completed movies
+  async function fetchMovies(apikey) {
+    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries?orderRating=${ratingOrder}`;
+    if (genreType && genreType !== "x") baseUrl += `&genres=${genreType}`;
+    if (year && year !== "x") baseUrl += `&year=${year}`;
+    if (timesOrder && timesOrder !== "x")
+      baseUrl += `&orderRewatch=${timesOrder}`;
+    if (date && date !== "x") baseUrl += `&orderDate=${date}`;
+
     const resp = await fetch(baseUrl, {
-      headers: { "X-API-Key": apiKey },
+      headers: { "X-API-Key": apikey },
     });
-    const jsonResponse = await resp.json();
-    const movies = jsonResponse;
-    setMovieList(movies);
+
+    if (resp.ok) {
+      const jsonResponse = await resp.json();
+      setMovieList(jsonResponse);
+    } else {
+      console.error("Failed to fetch movies");
+    }
   }
 
   useEffect(() => {
-    fetchCompletedMovies();
-  }, []);
+    fetchMovies(apiKey);
+  }, [genreType, ratingOrder, year, timesOrder, date, apiKey]);
 
-  //define function to update movie properties
+  // Update movie properties
   async function updateMovieDetail(movieId, endpoint, newValue) {
     const baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movieId}/${endpoint}`;
     const formData = new URLSearchParams();
@@ -37,38 +58,99 @@ export default function CompletedWatchlist() {
         "X-API-Key": apiKey,
       },
       body: formData,
-      // body: JSON.stringify({ [endpoint]: newValue }),
     });
 
-    const response = await resp.json();
-    // If the response is successful, update the movieList with the updated value
-    if (response.status >= 200 && response.status < 300) {
-      // Iterate to update the corresponding movieID
-      const newMovieList = List.map((movie) => {
-        if (movie.movieID === movieId) {
-          return { ...movie, [endpoint]: newValue };
-        } else {
-          return movie;
-        }
-      });
-      setMovieList(newMovieList); //Update state variable
+    if (resp.ok) {
+      // Update the corresponding movieID
+      const updatedList = List.map((movie) =>
+        movie.movieID === movieId ? { ...movie, [endpoint]: newValue } : movie
+      );
+      setMovieList(updatedList); // Update state variable
+    } else {
+      console.log("Update failed");
     }
+  }
+
+  function handleFailureClose() {
+    setFailure(false);
+  }
+
+  function handleSuccessClose() {
+    setSuccess(false);
+  }
+
+  function SuccessTrue() {
+    setSuccess(true);
+  }
+
+  function FailureTrue() {
+    setFailure(true);
+  }
+
+  function handleEditClick(movie) {
+    setSelectedMovie(movie);
+    setIsFormVisible(true);
+  }
+
+  function handleFormClose() {
+    setIsFormVisible(false);
+    setSelectedMovie(null);
+  }
+
+  function getGenreMovies(searchGenre) {
+    setGenreType(searchGenre);
+  }
+
+  function getMoviesByRating(order) {
+    setRatingOrder(order);
+  }
+
+  function getMoviesByYear(year) {
+    setYear(year);
+  }
+
+  function getMoviesByDate(dateOrder) {
+    setDateOrder(dateOrder);
+  }
+
+  function getMoviesByTimesWatched(numberOrder) {
+    setTimesWatchedOrder(numberOrder);
+  }
+
+  //update movie state after form submission
+  function updateMovieState(movieId, newNotes, newRating) {
+    const updatedList = List.map((movie) =>
+      movie.movieID === movieId
+        ? { ...movie, notes: newNotes, rating: newRating }
+        : movie
+    );
+    setMovieList(updatedList);
   }
 
   return (
     <Fragment>
-      <h1 className="Heading">Completed WatchList</h1>
-      <h3>Sorted By Highest Rated</h3>
+      <div className="filters-watchlist-container">
+        <div className="Headings-toWatch">
+          <h3 className="Heading">My Logs</h3>
+        </div>
+        <Filters
+          getGenreMovies={getGenreMovies}
+          getMoviesByRating={getMoviesByRating}
+          getMoviesByYear={getMoviesByYear}
+          getMoviesByDate={getMoviesByDate}
+          getMoviesByTimesWatched={getMoviesByTimesWatched}
+        />
+      </div>
       <table className="CompletedWatch">
         <thead>
           <tr>
-            <th>Initially Watched</th>
             <th>Last Watched</th>
             <th>Movie</th>
-            <th>Release Date</th>
+            <th>Year Released</th>
             <th>Rating</th>
             <th>Review</th>
             <th>Times-Watched</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -77,10 +159,21 @@ export default function CompletedWatchlist() {
               key={movie.movieID}
               movie={movie}
               updateMovieDetail={updateMovieDetail}
+              handleEditClick={handleEditClick}
+              updateMovieState={updateMovieState}
             />
           ))}
         </tbody>
       </table>
+      {isFormVisible && selectedMovie && (
+        <AddCompletedWatchForm
+          movie={selectedMovie}
+          Success={SuccessTrue}
+          Failed={FailureTrue}
+          onClose={handleFormClose}
+          updateMovieState={updateMovieState}
+        />
+      )}
     </Fragment>
   );
 }

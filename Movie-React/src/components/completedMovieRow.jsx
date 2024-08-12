@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import "../styles/completedWatch.css";
 
-const MovieRow = ({ movie, updateMovieDetail }) => {
-  //Initialize state variables with current value in database
+const MovieRow = ({ movie, updateMovieDetail, handleEditClick }) => {
   const [score, setScore] = useState(movie.rating);
   const [timesWatched, setTimesWatched] = useState(movie.Times_watched);
 
-  //function to handle score change
+  useEffect(() => {
+    setScore(movie.rating);
+    setTimesWatched(movie.Times_watched);
+  }, [movie.rating, movie.Times_watched]);
+
+  useEffect(() => {
+    const delayInputTimeout = setTimeout(() => {
+      if (score !== movie.rating) { //Avoid unnecessary updates
+        updateMovieDetail(movie.movieID, "rating", score);
+      }
+    }, 2000); // Update after 2 seconds of no changes
+
+    return () => {
+      clearTimeout(delayInputTimeout);
+    };
+  }, [score, movie.movieID, updateMovieDetail]);
+
   function handleScore(event) {
-    const newScore = event.target.value;
-    setScore(newScore);
+    setScore(event.target.value);
   }
-  //function to handle times-Watched change
+
   function handleTimesWatched() {
     const newTimesWatched = timesWatched + 1;
     setTimesWatched(newTimesWatched);
@@ -21,7 +37,6 @@ const MovieRow = ({ movie, updateMovieDetail }) => {
 
   return (
     <tr key={movie.movieID}>
-      <td>{movie.Initially_Watched}</td>
       <td>{movie.Last_Watched}</td>
       <td>
         <div className="movie-container">
@@ -31,32 +46,31 @@ const MovieRow = ({ movie, updateMovieDetail }) => {
           </Link>
         </div>
       </td>
-      <td>{movie.Release_Date}</td>
+      <td>{movie.Release_Year}</td>
       <td className="display-rating">
-        {movie.rating}
-        <form
-          className="rating-form"
-          onSubmit={(event) => {
-            event.preventDefault();
-            updateMovieDetail(movie.movieID, "rating", score);
-          }}
-        >
-          <input
-            className="rating-input"
-            type="number"
-            id={`score-for-movie-${movie.movieID}`}
-            value={score}
-            step={0.5}
-            min={0}
-            max={10}
-            onChange={handleScore}
-          />
-        </form>
+        {score}
+        <input
+          className="rating-input"
+          type="range"
+          id={`score-for-movie-${movie.movieID}`}
+          value={score}
+          step={0.1}
+          min={0}
+          max={10}
+          onChange={handleScore}
+        />
       </td>
       <td>{movie.notes}</td>
       <td className="display-side">
         {timesWatched}
         <button onClick={handleTimesWatched}>+</button>
+      </td>
+      <td>
+        <FontAwesomeIcon
+          onClick={() => handleEditClick(movie)}
+          className="edit-icon"
+          icon={faPenToSquare}
+        />
       </td>
     </tr>
   );

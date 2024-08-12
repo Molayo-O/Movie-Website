@@ -1,30 +1,26 @@
-import { useState } from "react";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "./Authentication";
-import { useNavigate } from "react-router-dom";
 
 export default function AddCompletedWatchForm({
   movie,
-  DeleteFromToWatch,
+  updateMovieState = () => {},
+  DeleteFromToWatch = () => {},
   Success,
   Failed,
   onClose,
 }) {
-  const [notes, setNotes] = useState("");
-  const [rating, setRating] = useState(0);
+  //default to 0/'' initially to avoid controlled/uncontrolled conflicts
+  const [notes, setNotes] = useState(movie.notes || ''); 
+  const [rating, setRating] = useState(movie.rating || 0);
   const { apiKey } = useContext(AuthContext);
 
-  const navigate = useNavigate();
-
-  const handleFullAdd = async (notes, rating) => {
+  const handleFullAdd = async () => {
     const formData = new URLSearchParams();
     formData.append("notes", notes);
     formData.append("rating", rating);
 
     try {
-      let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movie.movieID}`;
+      const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/completedwatchlist/entries/${movie.movieID}`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -40,6 +36,7 @@ export default function AddCompletedWatchForm({
       const data = await response.json();
       Success();
       DeleteFromToWatch(movie.movieID);
+      updateMovieState(movie.movieID, notes, rating); // Update the movie state
       onClose();
     } catch (error) {
       Failed();
@@ -67,7 +64,7 @@ export default function AddCompletedWatchForm({
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            handleFullAdd(notes, rating);
+            handleFullAdd();
           }}
         >
           <div className="container">
@@ -81,6 +78,7 @@ export default function AddCompletedWatchForm({
               max="10"
               min="0"
               step="0.1"
+              value={rating}
             />
           </div>
           <div className="container">
@@ -90,6 +88,7 @@ export default function AddCompletedWatchForm({
               name="notes"
               onChange={handleNoteChange}
               placeholder="Enter Review"
+              value={notes}
             ></textarea>
           </div>
           <button className="submit" type="submit">

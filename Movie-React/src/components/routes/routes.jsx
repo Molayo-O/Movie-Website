@@ -7,6 +7,7 @@ import Home from "./Home";
 import Layout from "./Layout";
 import AuthRoute from "./authRoute";
 import CompletedWatchlist from "../CompletedWatchList";
+import UserStats from "../UserStats";
 const routes = [
   {
     path: "/",
@@ -46,8 +47,13 @@ const routes = [
             path: "/MyAccount/CompletedWatchList",
             element: <CompletedWatchlist />,
             errorElement: <ErrorPage />,
-          }
-        ]
+          },
+          {
+            path: "/MyAccount/UserStats",
+            element: <UserStats />,
+            errorElement: <ErrorPage />,
+          },
+        ],
       },
     ],
   },

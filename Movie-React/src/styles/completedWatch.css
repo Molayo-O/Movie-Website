@@ -2,43 +2,54 @@
   width: 100%;
   display: block;
   color: white;
-  background-color: rgba(33, 31, 31, 0.741);
+  background-color: rgba(0, 0, 0, 0.741);
   border-collapse: collapse;
+  padding: 1em 6em 6em 6em;
+}
+
+tbody {
+  background-color: #5d5c5c4e;
+}
+
+.CompletedWatch tr {
+  border-bottom: 0.01em solid rgba(251, 251, 251, 0.134);
 }
 
 .movie-container {
   display: flex;
   align-items: center;
-  gap: 5em;
+  gap: 0.5em;
 }
 
 .movie-container img {
-  width: 10%;
+  width: 3em;
   height: auto;
 }
 
 .CompletedWatch th,
 .CompletedWatch td {
   padding: 0.5em 1.5em;
-  text-align: left;
+  vertical-align: middle; /* Ensure vertical alignment*/
+  text-align: center;
 }
 
 .CompletedWatch td:first-child {
-  padding-left: 3em;
+  padding-left: 1.5em;
 }
 
 .CompletedWatch td:last-child {
-  padding-right: 5em;
+  padding-right: 0.5em;
 }
 
 .CompletedWatch th {
-  background-color: rgba(1, 4, 7, 0.252);
+  background-color: rgba(48, 50, 51, 0.889);
 }
 
 .Heading,
 h3 {
   color: white;
 }
+
 h4 {
   margin-left: 1em;
   font-size: 1em;
@@ -54,44 +65,47 @@ h4:hover {
   font-size: 0.75em;
   border-radius: 2em;
   border-style: none;
-  padding: 0.25em 0.50em;
+  padding: 0.25em 0.5em;
   font-weight: bold;
+  margin-left: 1em;
+  background-color: rgba(203, 203, 203, 0.642);
+  color: rgba(0, 0, 0, 0.992);
+  border: 0.1em solid;
+  box-shadow: 0.1em 0.15em 0.1em 0.1em rgb(0, 0, 0);
 }
 
 .display-side button:hover {
-  background-color: rgba(148, 232, 148, 0.27);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.803);
+  color: rgb(0, 0, 0);
 }
 
 .display-side {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 2em auto;
+  margin: 2em;
 }
 
 .rating-form {
   display: block;
 }
+
 .rating-input {
   text-indent: 0em;
   width: 55%;
   padding: 0.3em 0.7em;
+  accent-color: rgb(84, 88, 91);
 }
 
 .display-rating {
-  /* display: flex; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.delete-button {
-  font-size: 0.75em;
-  border-radius: 2em;
-  border-style: none;
-  padding: 0.25em 0.50em;
-  font-weight: bold;
+.edit-icon {
+  color: rgba(255, 255, 255, 0.552);
 }
 
-.delete-button:hover {
-  background-color: rgba(190, 27, 27, 0.548);
-  color: white;
+.edit-icon:hover {
+  color: #fbf3f3;
 }

@@ -15,10 +15,11 @@ export default function WatchList() {
   const [year, setYear] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [orderPriority, setOrderPriority] = useState("ASC");
 
   // Fetch movie list with API key
   async function fetchMovies(apikey) {
-    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries?orderPriority=ASC`;
+    let baseUrl = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries?orderPriority=${orderPriority}`;
     if (genreType && genreType !== "x") baseUrl += `&genres=${genreType}`;
     if (ratingOrder && ratingOrder !== "x")
       baseUrl += `&orderRating=${ratingOrder}`;
@@ -38,7 +39,7 @@ export default function WatchList() {
 
   useEffect(() => {
     fetchMovies(apiKey);
-  }, [genreType, ratingOrder, year, apiKey]);
+  }, [genreType, ratingOrder, year, apiKey, orderPriority]);
 
   async function DeleteMovie(movieID) {
     const url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movieID}`;
@@ -66,6 +67,10 @@ export default function WatchList() {
 
   function getMoviesByYear(year) {
     setYear(year);
+  }
+
+  function getMoviesByPriority(Priorityorder) {
+    setOrderPriority(Priorityorder);
   }
 
   function handleFailureClose() {
@@ -122,6 +127,7 @@ export default function WatchList() {
           getGenreMovies={getGenreMovies}
           getMoviesByRating={getMoviesByRating}
           getMoviesByYear={getMoviesByYear}
+          getMoviesByPriority = {getMoviesByPriority}
         />
       </div>
       <ToWatchGrid

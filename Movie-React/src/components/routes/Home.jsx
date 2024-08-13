@@ -17,6 +17,7 @@ function Home() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const pageSize = 42;
 
   // Fetch movies based on search term, genre, and current page
@@ -39,7 +40,10 @@ function Home() {
       } else {
         setNoMovies(false);
       }
-      setMovieList(jsonResponse);
+      setMovieList(jsonResponse.movies);
+      //Determine total pages
+      console.log(jsonResponse.movies);
+      setTotalPages(Math.ceil(jsonResponse.total / pageSize));
     } catch (error) {
       console.error("Failed to fetch movies:", error);
       setNoMovies(true);
@@ -81,6 +85,9 @@ function Home() {
 
   // Function to handle pagination
   function changePage(newPage) {
+    //Scroll to top of the page
+    window.scrollTo(0, 0);
+    
     setCurrentPage(newPage);
   }
 
@@ -133,7 +140,7 @@ function Home() {
           setSuccess={successTrue}
         />
       )}
-      <Pagination currentPage={currentPage} changePage={changePage} />
+      <Pagination currentPage={currentPage} totalPages={totalPages}  changePage={changePage} />
     </>
   );
 }

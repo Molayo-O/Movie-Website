@@ -1,42 +1,52 @@
 .filters-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
 }
 
 .noMovies-message {
-    text-align: center;
-    font-size: 1.25em;
-    color: #ffffff;
+  text-align: center;
+  font-size: 1.25em;
+  color: #ffffff;
 }
 
 .pagination {
-    width: 30%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 2em auto 0em;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2em;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 2em auto 0em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination button {
-    color: black;
-    margin: 2em 0em;
-    border-radius: 0.3em;
-    padding: 0.75em 0.5em;
-    background-color: rgb(196, 196, 196);
-    font-size: 1em;
-    font-weight: 600;
+  color: white;
+  border: none;
+  width: 50%;
+  margin: 2em 0.5em;
+  border-radius: 0.3em;
+  padding: 0.8em 1em;
+  background-color: rgb(3, 3, 3);
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.pagination button.active {
+  border: 0.01em solid white;
+}
+
+.pagination button.active:hover {
+  color: white;
+}
+
+.pagination .next-page {
+  font-size: 1.25em;
 }
 
 .pagination button:hover {
-    border-color: #f67723;
+  color: #f67723;
 }
 
-span {
-    grid-column: 2;
-    justify-self: center;
-    color: white;
+.pagination .next-page:disabled {
+  opacity: 0;
 }

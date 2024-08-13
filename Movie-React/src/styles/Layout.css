@@ -4,7 +4,9 @@
 
 /* ------------------------- */
 
-body, html {
+body,
+html {
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   background-color: black;
@@ -42,8 +44,8 @@ a {
 }
 
 .Navbar .Navlinks a:hover {
-  border-top: 0.2em solid #F29559;
-  border-bottom: 0.2em solid #F29559;
+  border-top: 0.1em solid #f67723;
+  border-bottom: 0.1em solid #f67723;
 }
 
 .Navbar {

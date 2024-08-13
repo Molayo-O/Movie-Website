@@ -30,6 +30,7 @@
   margin-bottom: 1em;
   color: black;
   background-color: white;
+  border-radius: 0.5em;
 }
 
 /* style username div */
@@ -81,6 +82,10 @@
   grid-column: 1 / span 2;
   font-weight: 500;
   color: white;
+}
+
+.login-form a:hover {
+  text-decoration: underline;
 }
 
 /* hide error */

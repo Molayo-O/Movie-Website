@@ -90,9 +90,7 @@ h4:hover {
 }
 
 .rating-input {
-  text-indent: 0em;
-  width: 55%;
-  padding: 0.3em 0.7em;
+  margin-left: 0.5em;
   accent-color: rgb(84, 88, 91);
 }
 

@@ -34,9 +34,7 @@ function Nav() {
                 <NavLink to="/MyAccount/Watchlist">Watchlist</NavLink>
               </li>
               <li>
-                <NavLink to="/MyAccount/CompletedWatchList">
-                  Film Journal
-                </NavLink>
+                <NavLink to="/MyAccount/CompletedWatchList">Film Journal</NavLink>
               </li>
               <li>
                 <NavLink to="/Login" onClick={handleLogout}>

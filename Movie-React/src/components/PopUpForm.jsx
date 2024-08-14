@@ -1,32 +1,26 @@
-import { useState } from "react";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
-import { AuthContext } from "./Authentication";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./Authentication";
 
-function PopUpForm({ movie }) {
+function PopUpForm({ movie, onSuccess, onFailure, onClose }) {
   //state variables
-  const [isVisible, setIsVisible] = useState(false);
   const [notes, setNotes] = useState("");
   const [priority, setPriority] = useState(1);
   const { apiKey } = useContext(AuthContext);
-  const {isAuth} = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleFullAdd = async (notes, priority) => {
+  const handleFullAdd = async () => {
     const formData = new URLSearchParams();
     formData.append("notes", notes);
     formData.append("priority", priority);
-    
-    console.log("formData:", formData.toString());
+
+    console.log(formData);
     try {
       let url = `https://loki.trentu.ca/~molayoogunfowora/3430/assn/cois-3430-2024su-a2-Molayo-0/api/towatchlist/entries/${movie.movieID}`;
       const response = await fetch(url, {
         method: "PUT",
         headers: {
           "X-API-Key": apiKey,
-          "Content-Type": "application/json",
         },
         body: formData,
       });
@@ -37,77 +31,49 @@ function PopUpForm({ movie }) {
       }
 
       const data = await response.json();
-      console.log("Movie added successfully:", data);
+      onSuccess();
+      onClose();
     } catch (error) {
       console.error("Error adding movie:", error);
+      onFailure;
     }
   };
 
-  const handleButtonClick = () => {
-    if(!isAuth) {
-      navigate("/Login");
-      return;
-    }
-    setIsVisible(!isVisible);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleFullAdd();
   };
 
-  const handleClose = () => {
-    setIsVisible(false);
-  };
-  function handleNoteChange(ev) {
-    setNotes(ev.target.value);
-  }
-
-  function changePriority(ev) {
-    setPriority(ev.target.value);
-  }
   return (
-    <div>
-      <button onClick={handleButtonClick}>
-        <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to WatchList
-      </button>
-
-      {isVisible && (
-        <div className="popup-form">
-          <div className="popup-form-content">
-            <button className="close" onClick={handleClose}>
-              x
-            </button>
-            <h2 className="WatchListFont">Add To WatchList</h2>
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                setIsVisible();
-                handleFullAdd(notes, priority);
-              }}
-            >
-              <div className="container">
-                <input onChange={changePriority} type="number" />
-                <label htmlFor="number">Priority</label>
-              </div>
-              <div className="container">
-                <textarea
-                  className="notes"
-                  name="notes"
-                  onChange={handleNoteChange}
-                ></textarea>
-                <label htmlFor="notes">Notes</label>
-              </div>
-              <button className="submit" type="submit">
-                Submit
-              </button>
-            </form>
-          </div>
+    <div className="popup-form active">
+      <div className="popup-form-content">
+        <button className="close" onClick={onClose}>
+          x
+        </button>
+        <div className="title-container">
+          <p className="WatchListFont">Movie: </p>
+          <h2>{movie.Title}</h2>
         </div>
-      )}
+        <form onSubmit={handleSubmit}>
+          <div className="container">
+            <label htmlFor="priority">Priority</label>
+            <span className="slider-rating">{priority}</span>
+            <input
+              type="range"
+              max="10"
+              min="0"
+              step="1"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            />
+          </div>
+          <button className="submit" type="submit">
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default PopUpForm;
-// Sort by priority desc
-
-// update priority button
-// watched it! button -> add to completedwatch
-// remove movie button
-//

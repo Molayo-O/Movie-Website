@@ -1,12 +1,18 @@
 // individual movie page (all details)
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStar2 } from "@fortawesome/free-regular-svg-icons";
-import "../styles/Movie.css";
+import {
+  faPlus,
+  faStar,
+  faStar as faStar2,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "./Authentication";
 import PopUpForm from "./PopUpForm";
+import "../styles/ToWatchList.css";
+import "../styles/Movie.css";
 
 function Movie() {
   const params = useParams();
@@ -15,6 +21,11 @@ function Movie() {
 
   const [movie, setMovie] = useState([]); //Initialize movie array
   const [genres, setGenres] = useState([]); //Initialize genres array
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+  const { isAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   //Function to fetch specific movie
   async function fetchMovies() {
@@ -30,15 +41,40 @@ function Movie() {
     fetchMovies();
   }, []);
 
+  const handleAddButtonClick = () => {
+    if (!isAuth) {
+      navigate("/Login");
+      return;
+    }
+    setIsFormVisible(true);
+  };
+
+  const handleFormClose = () => {
+    setIsFormVisible(false);
+  };
+
   return (
     <>
+      {failure && (
+        <div className="failure">Failed to add movie to watch list</div>
+      )}
       <section className="MovieDetails">
         <div className="Heading-Container">
           <div className="Heading">
             <h1 className="Title">{movie.Title}</h1>
           </div>
-          <div className="WatchListAdd watchlistbutton"></div>
-          <PopUpForm movie={movie} />
+          <button onClick={handleAddButtonClick}>
+            {success ? (
+              <>
+                <FontAwesomeIcon className="checkIcon" icon={faCheck} /> Added
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon className="addIcon" icon={faPlus} /> Add to
+                WatchList
+              </>
+            )}
+          </button>
         </div>
         <div className="movieCard">
           <img src={movie.Poster} alt="Movie Poster" />
@@ -75,14 +111,22 @@ function Movie() {
                   ? `${(movie.Vote_count / 1000).toFixed(1)}k`
                   : movie.Vote_count}
               </li>
-              <li className="rating">
+              {/* <li className="rating">
                 <FontAwesomeIcon icon={faStar2} />
                 Rate
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
       </section>
+      {isFormVisible && (
+        <PopUpForm
+          movie={movie}
+          onClose={handleFormClose}
+          onSuccess={() => setSuccess(true)}
+          onFailure={() => setFailure(true)}
+        />
+      )}
     </>
   );
 }

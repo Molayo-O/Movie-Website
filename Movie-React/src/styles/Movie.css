@@ -5,11 +5,11 @@ body {
 
 .MovieDetails {
   background: linear-gradient(-90deg, #23262d, #555a59);
-  margin: 5em auto;
+  margin: 2em auto;
   width: 90%;
   color: white;
   padding: 2em;
-  border-radius: 0.2em;
+  border-radius: 0.5em;
 }
 
 /*display title and .WatchListAdd button in row*/
@@ -75,7 +75,7 @@ h3 {
 .MovieDetails p {
   font-size: 1.25em;
   margin: 0.5em 0em;
-  width: 80%;
+  width: 90%;
 }
 
 /*Rating container*/

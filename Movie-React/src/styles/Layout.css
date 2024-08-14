@@ -44,8 +44,8 @@ a {
 }
 
 .Navbar .Navlinks a:hover {
-  border-top: 0.1em solid #f67723;
-  border-bottom: 0.1em solid #f67723;
+  border-top: 0.01em solid #f67723;
+  border-bottom: 0.01em solid #f67723;
 }
 
 .Navbar {
@@ -60,7 +60,10 @@ a {
 }
 
 .Navbar h1 {
+  font-weight: 600;
   font-size: 1.7em;
+  text-shadow: 0.1em 0.1em 0.05em #827d7d16;
+  /* font-family: "Nunito Sans", sans-serif; */
 }
 
 .Navlinks {

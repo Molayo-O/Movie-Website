@@ -4,7 +4,7 @@
 
 .filterOptions select {
   width: 100%;
-  color: white;
+  color: rgba(255, 255, 255, 0.788);
   background-color: #161718;
   font-size: 1em;
   padding: 0.5em;
@@ -20,8 +20,13 @@
 }
 
 .titleFilter {
-    margin: 1em 0.5em;
-    width: 20%;
+  margin: 1em 0.5em;
+  width: 20%;
+}
+
+.filterOptions select:hover {
+  color: white;
+  font-weight: 540;
 }
 
 /* #orderRating {

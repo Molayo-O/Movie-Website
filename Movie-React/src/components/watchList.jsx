@@ -73,20 +73,19 @@ export default function WatchList() {
     setOrderPriority(Priorityorder);
   }
 
-  function handleFailureClose() {
-    setFailure(false);
-  }
-
-  function handleSuccessClose() {
-    setSuccess(false);
+  //Add timeout to close message
+  function FailureTrue() {
+    setFailure(true);
+    setTimeout(() => {
+      setFailure(false);
+    }, 4000);
   }
 
   function SuccessTrue() {
     setSuccess(true);
-  }
-
-  function FailureTrue() {
-    setFailure(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 4000);
   }
 
   function handleWatchedItClick(movie) {
@@ -104,13 +103,13 @@ export default function WatchList() {
       {success && (
         <div className="success">
           <p>Successfully added movie to completed watch list</p>
-          <button onClick={handleSuccessClose}>X</button>
+          <button onClick={SuccessTrue}>X</button>
         </div>
       )}
       {failure && (
         <div className="failure">
           <p>Failed to Add Movie</p>
-          <button onClick={handleFailureClose}>X</button>
+          <button onClick={FailureTrue}>X</button>
         </div>
       )}
       <div className="filters-watchlist-container">

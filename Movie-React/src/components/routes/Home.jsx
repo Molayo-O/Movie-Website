@@ -1,8 +1,10 @@
 import MovieGrid from "../MovieGrid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import SearchForm from "../searchForm";
 import Filters from "../Filters";
 import Pagination from "../Pagination";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/Home.css";
 import "../../styles/genres.css";
 
@@ -42,7 +44,6 @@ function Home() {
       }
       setMovieList(jsonResponse.movies);
       //Determine total pages
-      console.log(jsonResponse.movies);
       setTotalPages(Math.ceil(jsonResponse.total / pageSize));
     } catch (error) {
       console.error("Failed to fetch movies:", error);
@@ -87,7 +88,7 @@ function Home() {
   function changePage(newPage) {
     //Scroll to top of the page
     window.scrollTo(0, 0);
-    
+
     setCurrentPage(newPage);
   }
 
@@ -95,12 +96,19 @@ function Home() {
     setError(false);
   }
 
+  //Add timeout to close message
   function errorTrue() {
     setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 4000);
   }
 
   function successTrue() {
     setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 4000);
   }
 
   function closeSuccess() {
@@ -109,18 +117,24 @@ function Home() {
 
   return (
     <>
-      {success && (
-        <div className="success">
-          <p>Successfully added movie to watch list</p>
-          <button onClick={closeSuccess}>X</button>
-        </div>
-      )}
-      {error && (
-        <div className="failure">
-          <p>Failed! Movie Already In WatchList</p>
-          <button onClick={closeError}>X</button>
-        </div>
-      )}
+      <div className="display-message-container">
+        {success && (
+          <div className={`success ${success ? "display" : ""}`}>
+            <p>Successfully added movie to watch list</p>
+            <button onClick={closeSuccess}>
+              <FontAwesomeIcon className="x-icon" icon={faX} />
+            </button>
+          </div>
+        )}
+        {error && (
+          <div className={`failure ${error ? "display" : ""}`}>
+            <p>Failed, Movie Already In WatchList</p>
+            <button onClick={closeError}>
+              <FontAwesomeIcon className="x-icon" icon={faX} />
+            </button>
+          </div>
+        )}
+      </div>
       <div className="filters-container">
         <Filters
           getGenreMovies={getGenreMovies}
@@ -134,13 +148,19 @@ function Home() {
           <p>No movies were found that met the criteria.</p>
         </div>
       ) : (
-        <MovieGrid
-          movies={MovieList}
-          setError={errorTrue}
-          setSuccess={successTrue}
-        />
+        <Fragment>
+          <MovieGrid
+            movies={MovieList}
+            setError={errorTrue}
+            setSuccess={successTrue}
+          />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            changePage={changePage}
+          />
+        </Fragment>
       )}
-      <Pagination currentPage={currentPage} totalPages={totalPages}  changePage={changePage} />
     </>
   );
 }

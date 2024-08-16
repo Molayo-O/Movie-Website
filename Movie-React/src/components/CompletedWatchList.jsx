@@ -71,20 +71,19 @@ export default function CompletedWatchlist() {
     }
   }
 
-  function handleFailureClose() {
-    setFailure(false);
-  }
-
-  function handleSuccessClose() {
-    setSuccess(false);
+  //Add timeout to close message
+  function FailureTrue() {
+    setFailure(true);
+    setTimeout(() => {
+      setFailure(false);
+    }, 4000);
   }
 
   function SuccessTrue() {
     setSuccess(true);
-  }
-
-  function FailureTrue() {
-    setFailure(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 4000);
   }
 
   function handleEditClick(movie) {

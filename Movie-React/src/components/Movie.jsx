@@ -49,6 +49,21 @@ function Movie() {
     setIsFormVisible(true);
   };
 
+  //Add timeout to close message
+  function FailureTrue() {
+    setFailure(true);
+    setTimeout(() => {
+      setFailure(false);
+    }, 4000);
+  }
+
+  function SuccessTrue() {
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+    }, 4000);
+  }
+
   const handleFormClose = () => {
     setIsFormVisible(false);
   };
@@ -123,8 +138,8 @@ function Movie() {
         <PopUpForm
           movie={movie}
           onClose={handleFormClose}
-          onSuccess={() => setSuccess(true)}
-          onFailure={() => setFailure(true)}
+          onSuccess={SuccessTrue}
+          onFailure={FailureTrue}
         />
       )}
     </>

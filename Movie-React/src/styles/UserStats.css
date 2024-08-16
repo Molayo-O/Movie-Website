@@ -1,3 +1,31 @@
-.UserStats h1{
+.UserStats{
     color: white;
+
+}
+
+.profile{
+    margin-bottom: 4em;
+}
+
+.StatsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1.5em;
+    padding: 3em;
+}
+
+#statsHeader{
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.Stat{
+border-radius: 1em;
+background-color: rgba(118, 118, 118, 0.708);
+margin: 1em;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
 }

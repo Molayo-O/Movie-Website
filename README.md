@@ -13,7 +13,7 @@ The main features include:
 The site was built using modern web technologies including:
 
 - PHP Backend that utilizes a REST API to manage all data requests and manipulations efficiently.
-- React Frontend that employs a responsive and dynamic single-page application approach for an interactive user experience.
+- React Frontend that employs a dynamic single-page application approach for an interactive user experience.
 - MySQL Database that stores movie details, user profiles, activity, and reviews for seamless data management.
 
 ## Future Functionalities

@@ -23,4 +23,4 @@ The site was built using modern web technologies including:
 
 ### Link to Website
 
-<https://molayo-o.github.io/Movie-Website/>
+<https://watchedit.site/>
